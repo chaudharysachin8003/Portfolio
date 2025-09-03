@@ -6,6 +6,13 @@
   <title>Sachin – UI/UX Designer</title>
   <meta name="description" content="UI/UX Designer portfolio – product design, wireframes, prototypes, and design systems." />
   <meta name="theme-color" content="#0f172a" />
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("NaQ2sgLvuaxX1sLll"); // replace with your EmailJS public key
+  })();
+</script>
+
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Sachin – UI/UX Designer" />
@@ -389,7 +396,7 @@
         <p class="section-desc">Have a project or role in mind? Let’s talk.</p>
       </div>
       <div class="grid cols-2">
-        <form class="card reveal" onsubmit="handleSubmit(event)">
+        <form class="card reveal" onsubmit="handleSubmit(event)" id="contact-form">
           <label class="sr-only" for="name">Name</label>
           <input id="name" name="name" placeholder="Your name" required style="width:100%; margin-bottom:10px; padding:12px 14px; border-radius:12px; border:1px solid color-mix(in oklab, var(--text) 14%, transparent); background: color-mix(in oklab, var(--card) 92%, transparent); color: var(--text);">
 
@@ -489,6 +496,20 @@
     });
     toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
+  <script>
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm('service_jdfifms', 'template_oa229xd ', this)
+      .then(() => {
+        document.getElementById('form-status').innerText = "✅ Message sent successfully!";
+        this.reset();
+      }, (error) => {
+        document.getElementById('form-status').innerText = "❌ Failed to send. Try again.";
+        console.error('EmailJS error:', error);
+      });
+});
+</script>
 </body>
 </html>
 
