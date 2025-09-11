@@ -1,320 +1,139 @@
+<!-- full merged file (Navbar + Hero + Fixed Scroll Strip) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portfolio - Sachin</title>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&family=Lufga:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* ================= NAVBAR ================= */
-    nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 22px 40px;
-      background: #111;
-      border-radius: 30px;
-      margin: 20px auto;
-      width: 90%;
-      position: relative;
+    /* ============ NAVBAR (same as before) ============ */
+    nav{
+      display:flex; justify-content:center; align-items:center;
+      padding:22px 40px; background:#111; border-radius:30px;
+      margin:20px auto; width:90%; position:relative;
+    }
+    nav ul{ list-style:none; display:flex; gap:25px; margin:0; padding:0; width:100%; justify-content:space-evenly; }
+    nav ul li a{ text-decoration:none; font-family:'Lufga',sans-serif; color:#fff; font-weight:500; padding:10px 18px; border-radius:20px; transition:.3s; }
+    nav ul li a.active, nav ul li a:hover{ background:#ff6b2d; }
+    .logo{ position:absolute; left:50%; transform:translateX(-50%); font-size:18px; font-weight:bold; color:#fff; background:#ff6b2d; border-radius:50%; padding:12px 16px; z-index:10; }
+    .menu-toggle{ display:none; flex-direction:column; cursor:pointer; position:absolute; right:20px; top:22px; z-index:11; }
+    .menu-toggle span{ height:3px; width:25px; background:#fff; margin:4px 0; border-radius:3px; transition:.3s; }
+    @media (max-width:768px){
+      nav{ flex-direction:column; align-items:flex-start; padding:20px; }
+      nav ul{ flex-direction:column; gap:15px; width:100%; margin-top:60px; display:none; }
+      nav ul.active{ display:flex; }
+      .logo{ position:relative; left:0; transform:none; margin-bottom:10px; }
+      .menu-toggle{ display:flex; }
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      justify-content: space-evenly;
+    /* ============ HERO (same as before) ============ */
+    .hero{ text-align:center; padding:30px 20px 100px; position:relative; max-width:1200px; margin:auto; margin-bottom:198px; }
+    .hello{ display:inline-block; padding:5px 15px; background:#fff; border:1px solid #000; border-radius:20px; font-size:20px; margin-bottom:10px; font-family:'Lufga',sans-serif; position:relative; }
+    .vector-top{ position:absolute; top:-18px; right:-20px; width:27px; }
+    .hero h1{ font-size:95.5px; font-weight:600; margin:10px 0; font-family:'Urbanist',sans-serif; }
+    .hero h1 span{ color:#ff6b2d; }
+    .vector-bottom{ position:absolute; bottom:118px; left:21%; transform:translateX(-50%); width:90px; }
+    .hero-image{ position:relative; margin:40px auto; width:350px; }
+    .hero-image img{ width:700px; max-width:100%; border-radius:15px; height:auto; }
+    .btns{ position:relative; display:inline-block; z-index:5; top:40px; }
+    .btn{ display:inline-flex; align-items:center; gap:10px; text-decoration:none; padding:14px 36px; border-radius:100px; font-family:'Lufga',sans-serif; font-weight:700; font-size:16px; cursor:pointer; transition:all .3s ease; white-space:nowrap; border:2px solid transparent; }
+    .btn.portfolio{ background:#ff6b2d; color:#fff; border:2px solid #ff6b2d; }
+    .btn.portfolio .arrow{ transition:transform .25s ease; } .btn.portfolio:hover .arrow{ transform:translateX(6px); }
+    .btn.hire{ position:absolute; top:50%; left:0; transform:translate(0,-50%); opacity:0; pointer-events:none; background:rgba(255,255,255,0.4); color:#333; border:2px solid rgba(255,255,255,0.6); backdrop-filter:blur(10px); padding:12px 30px; border-radius:100px; transition:all .4s ease; }
+    .btn.portfolio:hover + .btn.hire, .btns:hover .btn.hire{ transform:translate(120%,-50%); opacity:1; pointer-events:auto; }
+    .btn.hire:hover{ border-color:#ff6b2d; color:#ff6b2d; background:rgba(255,255,255,0.6); }
+
+    .quote{ position:absolute; left:50px; top:99%; transform:translateY(-50%); max-width:280px; font-size:16px; line-height:1.6; color:#444; text-align:left; font-family:'Poppins',sans-serif; }
+    .exp{ position:absolute; right:50px; top:86%; transform:translateY(-50%); text-align:end; font-family:'Lufga',sans-serif; }
+    .stars{ color:#ff6b2d; font-size:35px; }
+    .exp p{ font-size:47px; margin-top:5px; margin-bottom:0px; font-family:'Urbanist',sans-serif; font-weight:600; }
+    .exp span{ font-size:20px; font-family:'Lufga',sans-serif; font-weight:400; }
+
+    @media (max-width:992px){
+      .hero h1{ font-size:60px; } .quote,.exp{ font-size:14px; max-width:200px; } .exp p{ font-size:32px; } .stars{ font-size:24px; }
+    }
+    @media (max-width:768px){
+      .hero{ padding:20px 15px 60px; margin-bottom:100px; }
+      .hero h1{ font-size:40px; line-height:1.2; }
+      .vector-bottom, .vector-top{ display:none; }
+      .hero-image{ width:100%; margin:20px auto; }
+      .hero-image img{ width:100%; height:auto; }
+      .btns{ top:20px; display:flex; justify-content:center; flex-wrap:wrap; gap:15px; }
+      .btn{ padding:12px 24px; font-size:14px; }
+      .quote, .exp{ position:static; text-align:center; margin:20px auto; transform:none; max-width:100%; }
+      .exp p{ font-size:28px; } .exp span{ font-size:16px; margin:0; }
+    }
+    @media (max-width:480px){
+      .hero h1{ font-size:28px; } .btn{ padding:10px 20px; font-size:13px; } .stars{ font-size:20px; } .exp p{ font-size:22px; }
     }
 
-    nav ul li {
-      display: inline-block;
+    /* ======= SCROLL STRIP (FIXED: green strips visible) ======= */
+    .strip{
+      position:relative;
+      width:100%;
+      background:#ff6b2d; /* yellow center */
+      z-index:2;
+      overflow: visible; /* allow the green pseudo elements to extend outside */
     }
 
-    nav ul li a {
-      text-decoration: none;
-      font-family: 'Lufga', sans-serif;
-      color: #fff;
-      font-weight: 500;
-      padding: 10px 18px;
-      border-radius: 20px;
-      transition: 0.3s;
+    /* GREEN TOP SHAPE */
+    .strip::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:-39px;        /* move up so it sits above the yellow bar */
+      width:100%;
+      height:40px;
+      background:#1c3b2f; /* green */
+      clip-path: polygon(128% 0, 100% 0, 100% 100%, 0 162%);
+      z-index:1; /* below the text but above page background */
     }
 
-    nav ul li a.active,
-    nav ul li a:hover {
-      background: #ff6b2d;
+    /* GREEN BOTTOM SHAPE */
+    .strip::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-60px;
+      width:100%;
+      height:60px;
+      background:#1c3b2f;
+      clip-path: polygon(0 0, 100% 0, 100% -35%, 0 33%);
+      z-index:1;
     }
 
-    .logo {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 18px;
-      font-weight: bold;
-      color: #fff;
-      background: #ff6b2d;
-      border-radius: 50%;
-      padding: 12px 16px;
-      z-index: 10;
+    /* scrolling content sits above the green & yellow */
+    .scroll-content, .scl-con{ position:relative; z-index:2; }
+
+    .scl-con{
+      display:flex; gap:50px; white-space:nowrap;
+      animation: scroll 15s linear infinite;
+      padding:15px 0; font-weight:600; color:#111; font-size:15px;
+    }
+    .scl-con span{ display:flex; align-items:center; gap:8px; }
+    .scl-con span::before{ content:"✶"; font-size:14px; color:#111; margin-right:6px; }
+
+    @keyframes scroll{
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
-    /* Hamburger Icon */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      position: absolute;
-      right: 20px;
-      top: 22px;
-      z-index: 11;
+    /* responsive tweaks for the strip + green shapes */
+    @media (max-width:992px){
+      .strip::before{ top:-24px; height:34px; }
+      .strip::after{ bottom:-48px; height:48px; }
+      .scl-con{ animation-duration:13s; gap:40px; font-size:14px; }
     }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: #fff;
-      margin: 4px 0;
-      border-radius: 3px;
-      transition: 0.3s;
+    @media (max-width:768px){
+      .strip::before{ top:-18px; height:28px; clip-path: polygon(128% 0, 100% 0, 100% 100%, 0 150%); }
+      .strip::after{ bottom:-40px; height:40px; clip-path: polygon(0 0, 100% 0, 100% -25%, 0 30%); }
+      .scl-con{ animation-duration:11s; gap:30px; font-size:13px; padding:12px 0; }
     }
-
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-        margin-top: 60px;
-        display: none;
-      }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      .logo {
-        position: relative;
-        left: 0;
-        transform: none;
-        margin-bottom: 10px;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-    }
-
-    /* ================= HERO SECTION ================= */
-    .hero {
-      text-align: center;
-      padding: 30px 20px 100px;
-      position: relative;
-      max-width: 1200px;
-      margin: auto;
-      margin-bottom: 198px;
-    }
-
-    .hello {
-      display: inline-block;
-      padding: 5px 15px;
-      background: #fff;
-      border: 1px solid #000;
-      border-radius: 20px;
-      font-size: 20px;
-      margin-bottom: 10px;
-      font-family: 'Lufga', sans-serif;
-      position: relative;
-    }
-
-    .vector-top {
-      position: absolute;
-      top: -18px;
-      right: -20px;
-      width: 27px;
-      height: auto;
-    }
-
-    .hero h1 {
-      font-size: 95.5px;
-      font-weight: 600;
-      margin: 10px 0;
-      font-family: 'Urbanist', sans-serif;
-    }
-
-    .hero h1 span {
-      color: #ff6b2d;
-    }
-
-    .vector-bottom {
-      position: absolute;
-      bottom: 118px;
-      left: 21%;
-      transform: translateX(-50%);
-      width: 90px;
-      height: auto;
-    }
-
-    .hero-image {
-      position: relative;
-      margin: 40px auto;
-      width: 350px;
-    }
-
-    .hero-image img {
-      width: 700px;
-      max-width: 100%;
-      border-radius: 15px;
-      position: relative;
-      height: auto;
-    }
-
-    .btns {
-      position: relative;
-      display: inline-block;
-      z-index: 5;
-      top: 40px;
-      right: 0;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      padding: 14px 36px;
-      border-radius: 100px;
-      font-family: 'Lufga', sans-serif;
-      font-weight: 700;
-      font-size: 16px;
-      cursor: pointer;
-      transition: all .3s ease;
-      white-space: nowrap;
-      border: 2px solid transparent;
-    }
-
-    .btn.portfolio {
-      background: #ff6b2d;
-      color: #fff;
-      border: 2px solid #ff6b2d;
-    }
-    .btn.portfolio .arrow { transition: transform .25s ease; }
-    .btn.portfolio:hover .arrow { transform: translateX(6px); }
-
-    .btn.hire {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translate(0, -50%);
-      opacity: 0;
-      pointer-events: none;
-      background: rgba(255, 255, 255, 0.4);
-      color: #333;
-      border: 2px solid rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(10px);
-      padding: 12px 30px;
-      border-radius: 100px;
-      box-shadow: 0 10px 30px rgba(13,20,30,0.08);
-      z-index: 1;
-      transition: all 0.4s ease;
-    }
-
-    .btn.portfolio:hover + .btn.hire,
-    .btns:hover .btn.hire {
-      transform: translate(120%, -50%);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .btn.hire:hover {
-      border-color: #ff6b2d;
-      color: #ff6b2d;
-      background: rgba(255, 255, 255, 0.6);
-    }
-
-    .quote {
-      position: absolute;
-      left: 50px;
-      top: 99%;
-      transform: translateY(-50%);
-      max-width: 280px;
-      font-size: 16px;
-      line-height: 1.6;
-      color: #444;
-      text-align: left;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .exp {
-      position: absolute;
-      right: 50px;
-      top: 86%;
-      transform: translateY(-50%);
-      text-align: end;
-      font-family: 'Lufga', sans-serif;
-    }
-
-    .stars {
-      color: #ff6b2d;
-      font-size: 35px;
-    }
-
-    .exp p {
-      font-size: 47px;
-      margin-top: 5px;
-      margin-bottom: 0px;
-      font-family: 'Urbanist', sans-serif;
-      font-weight: 600;
-    }
-
-    .exp span {
-      font-size: 20px;
-      font-family: 'Lufga', sans-serif;
-      font-weight: 400;
-    }
-
-    /* ========== Responsive Hero ========== */
-    @media (max-width: 992px) {
-      .hero h1 { font-size: 60px; }
-      .quote, .exp { font-size: 14px; max-width: 200px; }
-      .exp p { font-size: 32px; }
-      .stars { font-size: 24px; }
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        padding: 20px 15px 60px;
-        margin-bottom: 100px;
-      }
-      .hero h1 { font-size: 40px; line-height: 1.2; }
-      .vector-bottom, .vector-top { display: none; }
-      .hero-image { width: 100%; margin: 20px auto; }
-      .hero-image img { width: 100%; height: auto; }
-      .btns { top: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
-      .btn { padding: 12px 24px; font-size: 14px; }
-      .quote, .exp {
-        position: static;
-        text-align: center;
-        margin: 20px auto;
-        transform: none;
-        max-width: 100%;
-      }
-      .exp p { font-size: 28px; }
-      .exp span { font-size: 16px; margin: 0; }
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 28px; }
-      .btn { padding: 10px 20px; font-size: 13px; }
-      .stars { font-size: 20px; }
-      .exp p { font-size: 22px; }
+    @media (max-width:480px){
+      .strip::before{ top:-14px; height:22px; }
+      .strip::after{ bottom:-30px; height:30px; }
+      .scl-con{ animation-duration:9s; gap:20px; font-size:12px; padding:10px 0; }
     }
   </style>
 </head>
@@ -323,11 +142,7 @@
   <!-- Navbar -->
   <nav>
     <div class="logo">JC</div>
-    <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('active')">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('active')"><span></span><span></span><span></span></div>
     <ul>
       <li><a href="#" class="active">Home</a></li>
       <li><a href="#">About</a></li>
@@ -338,32 +153,37 @@
     </ul>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="hello">
-      Hello!
-      <img src="./Vector 1.png" alt="decor" class="vector-top">
-    </div>
-    <h1>
-      I’m <span>Sachin</span>,<br>Ui/UX Designer
-      <img src="./Vector 2.png" alt="decor" class="vector-bottom">
-    </h1>
-    <div class="quote">
-      <p>Passionate and innovative UI/UX & Graphic Designer with 4+ years of experience in crafting visually compelling designs and seamless digital experiences.</p>
-    </div>
-    <div class="hero-image">
-      <img src="./Frame 57.png" alt="Sachin">
-    </div>
-    <div class="btns">
-      <a href="#" class="btn portfolio">Portfolio <span class="arrow">↗</span></a>
-      <a href="#" class="btn hire">Hire Me</a>
-    </div>
-    <div class="exp">
-      <div class="stars">★★★★★</div>
-      <p>4+ Years</p>
-      <span>Experience</span>
-    </div>
+    <div class="hello">Hello! <img src="./Vector 1.png" alt="decor" class="vector-top"></div>
+    <h1>I’m <span>Sachin</span>,<br>Ui/UX Designer <img src="./Vector 2.png" alt="decor" class="vector-bottom"></h1>
+    <div class="quote"><p>Passionate and innovative UI/UX & Graphic Designer with 4+ years of experience in crafting visually compelling designs and seamless digital experiences.</p></div>
+    <div class="hero-image"><img src="./Frame 57.png" alt="Sachin"></div>
+    <div class="btns"><a href="#" class="btn portfolio">Portfolio <span class="arrow">↗</span></a><a href="#" class="btn hire">Hire Me</a></div>
+    <div class="exp"><div class="stars">★★★★★</div><p>4+ Years</p><span>Experience</span></div>
   </section>
+
+  <!-- Scroll Bar (with green strips) -->
+  <div class="strip">
+    <div class="strip-con">
+      <div class="scroll-bar">
+        <div class="scroll-content">
+          <!-- NOTE: duplicating the items once helps create a smooth loop -->
+          <div class="scl-con">
+            <span>App Design</span><span>Website Design</span><span>Dashboard</span><span>Wireframe</span>
+            <span>App Design</span><span>Website Design</span><span>Dashboard</span><span>Wireframe</span>
+            <span>App Design</span><span>Website Design</span><span>Dashboard</span><span>Wireframe</span>
+          </div>
+          <!-- duplicate for smooth loop (keeps animation seamless) -->
+          <div class="scl-con" aria-hidden="true">
+            <span>App Design</span><span>Website Design</span><span>Dashboard</span><span>Wireframe</span>
+            <span>App Design</span><span>Website Design</span><span>Dashboard</span><span>Wireframe</span>
+            <span>App Design</span><span>Website Design</span><span>Dashboard</span><span>Wireframe</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
