@@ -16,7 +16,7 @@
 nav {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   background: #111;
   border-radius: 30px;
   padding: 14px 2px;
@@ -25,21 +25,17 @@ nav {
   position: relative;
 }
 
-/* Left & Right Menus */
-.nav-left,
-.nav-right {
+/* Menu Items */
+.nav-left {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 121px;
+  gap: 40px;
   margin: 0;
   padding: 0;
 }
 
-.nav-left { flex: 1; justify-content: space-around; }
-.nav-right { flex: 1; justify-content: flex-end; }
-
-nav ul li a {
+.nav-left li a {
   text-decoration: none;
   font-family: 'Lufga', sans-serif;
   color: #fff;
@@ -49,8 +45,8 @@ nav ul li a {
   transition: 0.3s;
 }
 
-nav ul li a.active,
-nav ul li a:hover {
+.nav-left li a.active,
+.nav-left li a:hover {
   background: #ff6b2d;
 }
 
@@ -68,14 +64,64 @@ nav ul li a:hover {
   z-index: 10;
 }
 
-/* Brand Text (CREA) next to logo */
+/* Brand Text */
 .brand {
   position: absolute;
   left: 50%;
-  transform: translateX(30px); /* adjust for spacing next to circle */
+  transform: translateX(30px);
   font-size: 18px;
   font-weight: 600;
   color: #fff;
+}
+
+/* ---------- Hamburger ---------- */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  z-index: 20;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 28px;
+  background: #fff;
+  margin: 4px 0;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .logo, .brand {
+    position: relative;
+    left: 0;
+    transform: none;
+    margin: 0 auto 10px;
+  }
+
+  .menu-toggle { display: flex; }
+
+  .nav-left {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    display: none;
+    margin-top: 10px;
+  }
+
+  .nav-left.active {
+    display: flex;
+  }
 }
     /* ---------------- HERO ---------------- */
     .hero {
@@ -1078,8 +1124,12 @@ section.experience {
 </head>
 <body>
 
-  <!-- Navbar -->
+<!-- Navbar -->
 <nav>
+  <div class="menu-toggle" onclick="document.querySelector('.nav-left').classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </div>
+
   <ul class="nav-left">
     <li><a href="#" class="active">Home</a></li>
     <li><a href="#">About</a></li>
@@ -1088,8 +1138,10 @@ section.experience {
     <li><a href="#">Project</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
-</nav>
 
+  <div class="logo">JC</div>
+  <span class="brand">CREA</span>
+</nav>
 
   <!-- Hero -->
   <section class="hero">
