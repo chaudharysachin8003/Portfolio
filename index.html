@@ -690,6 +690,383 @@ section.experience {
     gap: 30px;
   }
 }
+/* Portfolio Section */
+.portfolio-section {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 20px;
+  font-family: 'Lufga', sans-serif;
+  color: #000;
+}
+
+/* Header */
+.portfolio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.portfolio-header h2 {
+  font-size: 40px;
+  font-weight: 600;
+}
+.portfolio-header h2 span {
+  color: #ff914d;
+}
+.see-all-btn {
+  background: #ff914d;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 25px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+}
+.see-all-btn:hover {
+  background: #e56f2c;
+}
+
+/* Slider */
+.portfolio-slider {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.portfolio-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+.portfolio-card {
+  flex: 0 0 calc(50% - 10px); /* 2 cards per row */
+  margin: 0 5px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(12px); /* blur background */
+}
+.portfolio-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+}
+.card-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Dots */
+.portfolio-dots {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 8px;
+}
+.portfolio-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #999;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.portfolio-dots .dot.active {
+  background: #ff914d;
+  width: 28px;
+  border-radius: 20px;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 25px 0;
+}
+.tag {
+  background: #fff;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.tag:hover {
+  background: #ff914d;
+  color: #fff;
+}
+
+/* Project Details */
+.project-details {
+  text-align: center;
+}
+.project-details h3 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+.project-details h3 span {
+  color: #ff914d;
+}
+.project-details p {
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.arrow-link {
+  background: #ff914d;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 50%;
+  margin-left: 8px;
+  font-size: 18px;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+  transform: rotate(-42deg);
+}
+.arrow-link:hover {
+  background: #e56f2c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .portfolio-card { flex: 0 0 100%; }
+  .portfolio-header h2 { font-size: 28px; }
+}
+.footer {
+  background: #1e1e1e;
+  padding: 50px 80px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.footer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.footer-header h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hire-btn {
+  background: #ff914d;
+  color: #fff;
+  border: none;
+  padding: 14px 35px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.hire-btn:hover { background: #e56f2c; }
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 30px 0;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+}
+
+/* Left */
+.footer-left { max-width: 300px; }
+.flogo { display: flex; align-items: center; margin-bottom: 15px; }
+.flogo-icon {
+  background: #ff914d;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  margin-right: 10px;
+  font-size: 18px;
+}
+.flogo h3 { color: #fff; }
+.footer-left p { font-size: 14px; line-height: 1.6; color: #ccc; margin-bottom: 15px; }
+.social-icons { display: flex; gap: 12px; }
+.social-icons a { font-size: 18px; color: #fff; transition: 0.3s; }
+.social-icons a:hover { color: #ff914d; }
+
+/* Middle */
+.footer-middle { display: flex; gap: 80px; }
+.footer-column h4 {
+  color: #ff914d;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.footer-column ul { list-style: none; padding: 0; }
+.footer-column ul li { margin-bottom: 10px; color: #fff; }
+.footer-column ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+  transition: 0.3s;
+}
+.footer-column ul li a:hover { color: #ff914d; }
+
+/* Right */
+.footer-right h4 { color: #ff914d; font-size: 16px; font-weight: 600; margin-bottom: 15px; }
+.subscribe {
+  display: flex;
+  border-radius: 25px;
+  overflow: hidden;
+  border: 1px solid #ff914d;
+}
+.subscribe input {
+  border: none;
+  padding: 12px 15px;
+  font-size: 14px;
+  flex: 1;
+  outline: none;
+}
+.subscribe button {
+  background: #ff914d;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.subscribe button:hover { background: #e56f2c; }
+
+/* Bottom */
+.footer-bottom {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #aaa;
+}
+.footer-bottom a {
+  text-decoration: none;
+  color: #aaa;
+  margin-left: 10px;
+  transition: 0.3s;
+}
+.footer-bottom a:hover { color: #ff914d; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-header { flex-direction: column; gap: 15px; text-align: center; }
+  .footer-content { flex-direction: column; gap: 30px; }
+  .footer-middle { gap: 40px; flex-wrap: wrap; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
+}
+@media (max-width: 600px) {
+  .footer { padding: 40px 20px; }
+  .footer-header h2 { font-size: 28px; }
+}
+.project-idea {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.project-idea h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 40px;
+}
+
+.project-idea h2 span {
+  color: #ff914d;
+}
+
+.idea-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto;
+  border: 2px solid #000;
+  border-radius: 50px;
+  padding: 8px;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+.idea-form .icon {
+  background: #ffe0c9;
+  border-radius: 50%;
+  padding: 12px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.idea-form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 15px 20px;
+  font-size: 16px;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  margin-right: 10px;
+  min-width: 200px; /* Prevent input from shrinking too much */
+}
+
+.idea-form button {
+  background: #ff914d;
+  border: none;
+  outline: none;
+  padding: 14px 35px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.idea-form button:hover {
+  background: #e56f2c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-idea h2 {
+    font-size: 28px;
+  }
+
+  .idea-form {
+    flex-direction: column;
+    border-radius: 25px;
+    padding: 15px;
+  }
+
+  .idea-form .icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .idea-form input {
+    width: 100%;
+    margin: 0 0 15px 0;
+    border-radius: 25px;
+  }
+
+  .idea-form button {
+    width: 100%;
+    border-radius: 25px;
+  }
+}
 
   </style>
 </head>
@@ -919,6 +1296,7 @@ section.experience {
     </div>
   </div>
 </section>
+
 <section class="hire-section">
   <div class="hire-image">
     <img src="your-image.png" alt="Hire me">
@@ -947,6 +1325,166 @@ section.experience {
   </div>
 </section>
 
+<section class="project-idea">
+    <h2>Have an Awsome Project Idea? <span>Let’s Discuss</span></h2>
+    <form class="idea-form">
+      <div class="icon">
+        ✉️
+      </div>
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+<section class="portfolio-section">
+  <!-- Header -->
+  <div class="portfolio-header">
+    <h2>Lets have a look at my <span>Portfolio</span></h2>
+    <button class="see-all-btn">See All</button>
+  </div>
+
+  <!-- Slider -->
+  <div class="portfolio-slider">
+    <div class="portfolio-track" id="portfolioSlider">
+      <div class="portfolio-card">
+        <img src="https://picsum.photos/800/500?random=1" alt="Project 1">
+        <div class="card-overlay">
+          <h3>Lirante</h3>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="https://picsum.photos/800/500?random=2" alt="Project 2">
+        <div class="card-overlay">
+          <h3>Lirante</h3>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="https://picsum.photos/800/500?random=3" alt="Project 3">
+        <div class="card-overlay">
+          <h3>Lirante</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="portfolio-dots" id="portfolioDots"></div>
+
+  <!-- Tags -->
+  <div class="tags">
+    <div class="tag">Landing Page</div>
+    <div class="tag">Product Design</div>
+    <div class="tag">Animation</div>
+    <div class="tag">Glassmorphism</div>
+    <div class="tag">Cards</div>
+  </div>
+
+  <!-- Description -->
+  <div class="project-details">
+    <h3>Lirante - <span>Food Delivery Solution</span>
+      <a href="#" class="arrow-link">➝</a>
+    </h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim. Sed lobortis orci elementum egestas lobortis.</p>
+  </div>
+</section>
+<footer class="footer">
+  <!-- Header -->
+  <div class="footer-header">
+    <h2>Let's Connect There</h2>
+    <button class="hire-btn">Hire me →</button>
+  </div>
+
+  <!-- Content -->
+  <div class="footer-content">
+    <!-- Left -->
+    <div class="footer-left">
+      <div class="flogo">
+        <div class="flogo-icon">JC</div>
+        <h3>JCREA</h3>
+      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.</p>
+      <div class="social-icons">
+        <a href="#">🌐</a>
+        <a href="#">▶️</a>
+        <a href="#">💬</a>
+        <a href="#">📸</a>
+        <a href="#">🐦</a>
+      </div>
+    </div>
+
+    <!-- Middle -->
+    <div class="footer-middle">
+      <div class="footer-column">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Service</a></li>
+          <li><a href="#">Resume</a></li>
+          <li><a href="#">Project</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <ul>
+          <li>+20 11 43 63 73 41</li>
+          <li>fawzisayed1209@gmail.com</li>
+          <li>fawziuix.com</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right -->
+    <div class="footer-right">
+      <h4>Get the latest information</h4>
+      <form class="subscribe">
+        <input type="email" placeholder="Email Address" required>
+        <button type="submit">➝</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>Copyright © 2023 Fawziuix. All Rights Reserved.</p>
+    <p>
+      <a href="#">User Terms & Conditions</a> | 
+      <a href="#">Privacy Policy</a>
+    </p>
+  </div>
+</footer>
+
+
+
+
+<script>
+const slider = document.getElementById("portfolioSlider");
+const dotsContainer = document.getElementById("portfolioDots");
+const slides = document.querySelectorAll(".portfolio-card");
+
+let currentIndex = 0;
+let slidesPerView = window.innerWidth < 768 ? 1 : 2;
+let totalSlides = Math.ceil(slides.length / slidesPerView);
+
+// Create dots
+for (let i = 0; i < totalSlides; i++) {
+  let dot = document.createElement("div");
+  dot.classList.add("dot");
+  if (i === 0) dot.classList.add("active");
+  dot.addEventListener("click", () => goToSlide(i));
+  dotsContainer.appendChild(dot);
+}
+
+function goToSlide(index) {
+  currentIndex = index;
+  slider.style.transform = `translateX(-${index * 100}%)`;
+  updateDots();
+}
+function updateDots() {
+  document.querySelectorAll(".portfolio-dots .dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === currentIndex);
+  });
+}
+</script>
 
 </body>
 </html>
