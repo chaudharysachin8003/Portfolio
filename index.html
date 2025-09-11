@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Sachin</title>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&family=Lufga:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Lufga Font (CDN) -->
+  <link href="https://fonts.cdnfonts.com/css/lufga" rel="stylesheet">
   <style>
     /* ---------------- NAVBAR ---------------- */
     nav {
@@ -358,7 +360,132 @@
 @media (max-width: 600px) {
   .card-container { min-width: 100%; }
 }
+/* ===== WORK EXPERIENCE ===== */
+section.experience {
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+  max-width: 1200px;
+  margin: auto;
+}
+.section-title {
+  font-size: 38px;
+  font-family: 'Urbanist', sans-serif;
+  margin-bottom: 70px;
+}
+.section-title span {
+  color: #ff6a00;
+}
 
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* Vertical dashed line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  border-left: 2px dashed #444;
+}
+
+/* Timeline Items */
+.timeline-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.timeline-left {
+  width: 40%;
+  text-align: right;
+}
+.timeline-right {
+  width: 40%;
+  text-align: left;
+}
+.timeline-left h3,
+.timeline-right h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'Lufga', sans-serif;
+}
+.timeline-left p,
+.timeline-right p {
+  margin: 5px 0 0;
+  color: #aaa;
+  line-height: 1.5;
+  font-family: 'Lufga', sans-serif;
+}
+
+/* Timeline Center Circles */
+.timeline-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0d0d0d;
+  padding: 6px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.timeline-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ff6a00;
+  border: 3px solid #fff;
+}
+.timeline-circle.dark {
+  background: #0d0d0d;
+  border: 3px solid #ff6a00;
+}
+
+/* ===== Responsive ===== */
+@media(max-width: 992px) {
+  .timeline {
+    gap: 60px;
+  }
+}
+@media(max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding-left: 50px;
+  }
+  .timeline-left, .timeline-right {
+    width: 100%;
+    text-align: left;
+  }
+  .timeline-center {
+    position: relative;
+    left: 0;
+    transform: none;
+    margin: 0 0 0 10px;
+  }
+}
+@media(max-width: 480px) {
+  .section-title {
+    font-size: 28px;
+  }
+  .timeline-left h3,
+  .timeline-right h4 {
+    font-size: 1rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -468,6 +595,86 @@
     <div class="dots" id="dots"></div>
   </div>
 </section>
+<section class="experience">
+  <h2 class="section-title">My <span>Work Experience</span></h2>
 
+  <div class="timeline">
+
+    <!-- Item 1 -->
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <h3>Fotografik Enterprises Pvt. Ltd.</h3>
+        <p>March 2019 – June 2022</p>
+      </div>
+      <div class="timeline-center">
+        <div class="timeline-circle"></div>
+      </div>
+      <div class="timeline-right">
+        <h4>Sr. Graphic Designer</h4>
+        <p>Led design projects for branding, social media creatives, and marketing campaigns, delivering visually impactful content.</p>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <h3>Aether Software Solution</h3>
+        <p>June 2022 – January 2023</p>
+      </div>
+      <div class="timeline-center">
+        <div class="timeline-circle dark"></div>
+      </div>
+      <div class="timeline-right">
+        <h4>Graphic & UI/UX Designer</h4>
+        <p>Designed engaging UI components and graphics, ensuring cohesive digital experiences.</p>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <h3>Tech Arch Softwares Pvt. Ltd.</h3>
+        <p>Sept 2023 – July 2024</p>
+      </div>
+      <div class="timeline-center">
+        <div class="timeline-circle"></div>
+      </div>
+      <div class="timeline-right">
+        <h4>UI/UX Designer</h4>
+        <p>Created user-friendly wireframes, prototypes, and responsive layouts across web and mobile.</p>
+      </div>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <h3>Qode Maker</h3>
+        <p>July 2024 – March 2025</p>
+      </div>
+      <div class="timeline-center">
+        <div class="timeline-circle"></div>
+      </div>
+      <div class="timeline-right">
+        <h4>UI/UX Designer</h4>
+        <p>Improved user journeys with interactive and visually consistent design solutions.</p>
+      </div>
+    </div>
+
+    <!-- Item 5 -->
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <h3>2aSquare Infotech Pvt. Ltd.</h3>
+        <p>April 2025 – Present</p>
+      </div>
+      <div class="timeline-center">
+        <div class="timeline-circle"></div>
+      </div>
+      <div class="timeline-right">
+        <h4>UI/UX Designer</h4>
+        <p>Currently delivering modern UI/UX solutions, focusing on usability and design systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
 </body>
 </html>
