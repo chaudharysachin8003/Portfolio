@@ -578,6 +578,118 @@ section.experience {
     width: 100%;
   }
 }
+.hire-section {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f4f6fa;
+  border-radius: 25px;
+  gap: 40px;
+}
+
+.hire-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hire-image img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 20px;
+}
+
+.hire-content {
+  flex: 1;
+}
+
+.hire-content h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin: 0 0 15px;
+   font-family: 'Lufga', sans-serif;
+}
+
+.hire-content h2 span {
+  color: #ff914d;
+   font-family: 'Lufga', sans-serif;
+}
+
+.hire-content p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 25px;
+   font-family: 'Lufga', sans-serif;
+}
+
+.hire-stats {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+   font-family: 'Lufga', sans-serif;
+}
+
+.hire-stats div {
+  text-align: center;
+  min-width: 120px;
+}
+
+.hire-stats h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  color: #2c2c2c;
+   font-family: 'Lufga', sans-serif;
+}
+
+.hire-stats p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0 0;
+   font-family: 'Lufga', sans-serif;
+}
+
+.hire-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 2px solid #000;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #000;
+  transition: 0.3s;
+   font-family: 'Lufga', sans-serif;
+}
+
+.hire-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hire-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .hire-content {
+    margin-top: 30px;
+  }
+
+  .hire-stats {
+    justify-content: center;
+    gap: 30px;
+  }
+}
 
   </style>
 </head>
@@ -807,6 +919,34 @@ section.experience {
     </div>
   </div>
 </section>
+<section class="hire-section">
+  <div class="hire-image">
+    <img src="your-image.png" alt="Hire me">
+  </div>
+
+  <div class="hire-content">
+    <h2>Why <span>Hire me</span>?</h2>
+    <p>
+      With 4+ years of experience in UI/UX and graphic design, I craft user-friendly, 
+      visually engaging solutions that drive results. I blend creativity with functionality 
+      to deliver designs that truly connect with users.
+    </p>
+
+    <div class="hire-stats">
+      <div>
+        <h3>450+</h3>
+        <p>Projects Completed</p>
+      </div>
+      <div>
+        <h3>4+</h3>
+        <p>Years Experience</p>
+      </div>
+    </div>
+
+    <a href="#" class="hire-btn">Hire Me</a>
+  </div>
+</section>
+
 
 </body>
 </html>
