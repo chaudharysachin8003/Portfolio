@@ -4,21 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Sachin</title>
-  <!-- Google Fonts - Urbanist -->
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Lufga Font (CDN) -->
-  <link href="https://fonts.cdnfonts.com/css/lufga" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&family=Lufga:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f9f6f1;
-      color: #333;
-    }
-
-    /* Navbar */
+    /* ================= NAVBAR ================= */
     nav {
       display: flex;
       justify-content: center;
@@ -70,8 +58,29 @@
       background: #ff6b2d;
       border-radius: 50%;
       padding: 12px 16px;
+      z-index: 10;
     }
-    /* Mobile Styling */
+
+    /* Hamburger Icon */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      position: absolute;
+      right: 20px;
+      top: 22px;
+      z-index: 11;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
@@ -83,17 +92,19 @@
         flex-direction: column;
         gap: 15px;
         width: 100%;
-        display: none; /* hide by default */
+        margin-top: 60px;
+        display: none;
       }
 
       nav ul.active {
-        display: flex; /* show when active */
+        display: flex;
       }
 
       .logo {
-        position: static;
+        position: relative;
+        left: 0;
         transform: none;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
       }
 
       .menu-toggle {
@@ -101,14 +112,14 @@
       }
     }
 
-    /* Hero Section */
+    /* ================= HERO SECTION ================= */
     .hero {
-       text-align: center;
-    padding: 30px 20px 100px;
-    position: relative;
-    max-width: 1200px;
-    margin: auto;
-    margin-bottom: 198px;
+      text-align: center;
+      padding: 30px 20px 100px;
+      position: relative;
+      max-width: 1200px;
+      margin: auto;
+      margin-bottom: 198px;
     }
 
     .hello {
@@ -123,13 +134,12 @@
       position: relative;
     }
 
-    /* Vector above Hello */
     .vector-top {
-    position: absolute;
-    top: -18px;
-    right: -20px;
-    width: 27px;
-    height: auto;
+      position: absolute;
+      top: -18px;
+      right: -20px;
+      width: 27px;
+      height: auto;
     }
 
     .hero h1 {
@@ -137,150 +147,118 @@
       font-weight: 600;
       margin: 10px 0;
       font-family: 'Urbanist', sans-serif;
-      /* position: relative;
-      display: inline-block; */
     }
 
     .hero h1 span {
       color: #ff6b2d;
     }
 
-    /* Vector below H1 */
     .vector-bottom {
       position: absolute;
-    bottom: 118px;
-    left: 21%;
-    transform: translateX(-50%);
-    width: 90px;
-    height: auto;
+      bottom: 118px;
+      left: 21%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: auto;
     }
 
     .hero-image {
       position: relative;
       margin: 40px auto;
       width: 350px;
-      
-    }
-
-    .circle {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 350px;
-      height: 350px;
-      background: #ffb07b;
-      border-radius: 50%;
-      z-index: 1;
     }
 
     .hero-image img {
-    width: 700px;
-    border-radius: 15px;
-    z-index: auto;
-    position: absolute;
-    /* top: 50px; */
-    right: -189px;
-    bottom: -371px;
-    height: 500px;
+      width: 700px;
+      max-width: 100%;
+      border-radius: 15px;
+      position: relative;
+      height: auto;
     }
+
     .btns {
-  position: relative;
-  display: inline-block;
-  z-index: 5;
-    top: 269px;
-    right: -30px;
-}
+      position: relative;
+      display: inline-block;
+      z-index: 5;
+      top: 40px;
+      right: 0;
+    }
 
-/* Common button style */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  padding: 14px 36px;
-  border-radius: 100px; /* fully rounded pill */
-  font-family: 'Lufga', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all .3s ease;
-  white-space: nowrap;
-  border: 2px solid transparent;
-  backdrop-filter: blur(0px); /* default off */
-}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 100px;
+      font-family: 'Lufga', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all .3s ease;
+      white-space: nowrap;
+      border: 2px solid transparent;
+    }
 
-/* Portfolio (main button) */
-.btn.portfolio {
-  background: #ff6b2d;
-  color: #fff;
-  border: 2px solid #ff6b2d;
-  position: relative;
-  z-index: 2;
-}
-.btn.portfolio .arrow { transition: transform .25s ease; }
-.btn.portfolio:hover .arrow { transform: translateX(6px); }
+    .btn.portfolio {
+      background: #ff6b2d;
+      color: #fff;
+      border: 2px solid #ff6b2d;
+    }
+    .btn.portfolio .arrow { transition: transform .25s ease; }
+    .btn.portfolio:hover .arrow { transform: translateX(6px); }
 
-/* Hire Me (hidden, slides right with blur) */
-.btn.hire {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate(0, -50%); /* hidden behind Portfolio */
-  opacity: 0;
-  pointer-events: none;
+    .btn.hire {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(0, -50%);
+      opacity: 0;
+      pointer-events: none;
+      background: rgba(255, 255, 255, 0.4);
+      color: #333;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 12px 30px;
+      border-radius: 100px;
+      box-shadow: 0 10px 30px rgba(13,20,30,0.08);
+      z-index: 1;
+      transition: all 0.4s ease;
+    }
 
-  background: rgba(255, 255, 255, 0.4); /* glass effect */
-  color: #333;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px); /* blurred glass */
-  padding: 12px 30px;
-  border-radius: 100px;
-  box-shadow: 0 10px 30px rgba(13,20,30,0.08);
+    .btn.portfolio:hover + .btn.hire,
+    .btns:hover .btn.hire {
+      transform: translate(120%, -50%);
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-  z-index: 1;
-  transition: all 0.4s ease;
-}
+    .btn.hire:hover {
+      border-color: #ff6b2d;
+      color: #ff6b2d;
+      background: rgba(255, 255, 255, 0.6);
+    }
 
-/* On hover, slide to right */
-.btn.portfolio:hover + .btn.hire,
-.btns:hover .btn.hire {
-  transform: translate(120%, -50%);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Hover effect for hire */
-.btn.hire:hover {
-  border-color: #ff6b2d;
-  color: #ff6b2d;
-  background: rgba(255, 255, 255, 0.6);
-}
-
-
-
-
-    /* Side info */
     .quote {
       position: absolute;
-    left: 50px;
-    top: 99%;
-    transform: translateY(-50%);
-    max-width: 280px;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #444;
-    text-align: left;
-    font-family: 'Poppins', sans-serif;
+      left: 50px;
+      top: 99%;
+      transform: translateY(-50%);
+      max-width: 280px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #444;
+      text-align: left;
+      font-family: 'Poppins', sans-serif;
     }
 
     .exp {
       position: absolute;
-    right: 50px;
-    top: 86%;
-    transform: translateY(-50%);
-    text-align: end;
-    font-family: 'Lufga', sans-serif;
+      right: 50px;
+      top: 86%;
+      transform: translateY(-50%);
+      text-align: end;
+      font-family: 'Lufga', sans-serif;
     }
 
     .stars {
@@ -295,1130 +273,65 @@
       font-family: 'Urbanist', sans-serif;
       font-weight: 600;
     }
-     .exp span {
+
+    .exp span {
       font-size: 20px;
       font-family: 'Lufga', sans-serif;
       font-weight: 400;
-      margin-top: 1px;
-      margin-left: 70px;
-    margin-right: 0;
     }
 
-    /* third section  */
-section.experience {
-    text-align: center;
-    padding: 0px 20px 30px;
-    position: relative;
-    max-width: 1200px;
-    margin: auto;
-}
-section.tools-section {
-    text-align: center;
-    padding: 80px 20px 60px;
-    position: relative;
-    max-width: 1200px;
-    margin: auto;
-
-}
-
-
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: 600;
-      margin-bottom: 60px;
+    /* ========== Responsive Hero ========== */
+    @media (max-width: 992px) {
+      .hero h1 { font-size: 60px; }
+      .quote, .exp { font-size: 14px; max-width: 200px; }
+      .exp p { font-size: 32px; }
+      .stars { font-size: 24px; }
     }
 
-    .section-title span {
-      color: #ff6a00;
-    }
-
-    .timeline {
-      position: relative;
-      max-width: 1000px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 80px;
-    }
-
-    /* Vertical Line */
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 100%;
-      border-left: 2px dashed #444;
-    }
-
-    .timeline-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-
-    .timeline-left {
-      width: 40%;
-      text-align: right;
-    }
-
-    .timeline-left h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin: 0;
-    }
-
-    .timeline-left p {
-      margin: 5px 0 0;
-      color: #aaa;
-    }
-
-    .timeline-center {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #0d0d0d;
-      padding: 6px;
-      border-radius: 50%;
-      border: 2px solid #fff;
-    }
-
-    .timeline-circle {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #ff6a00;
-      border: 3px solid #fff;
-    }
-
-    .timeline-circle.dark {
-      background: #0d0d0d;
-      border: 3px solid #ff6a00;
-    }
-
-    .timeline-right {
-      width: 40%;
-      text-align: left;
-    }
-
-    .timeline-right h4 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin: 0 0 8px;
-    }
-
-    .timeline-right p {
-      margin: 0;
-      color: #aaa;
-      line-height: 1.5;
-    }
-
-    /* Responsive */
-    @media(max-width: 768px) {
-      .timeline::before {
-        left: 20px;
-      }
-      .timeline-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-      }
-      .timeline-left, .timeline-right {
-        width: 100%;
-        text-align: left;
-      }
-      .timeline-center {
-        position: relative;
-        left: 0;
-        transform: none;
-        margin: 0 0 0 10px;
-      }
-    }
-    /* Scroll Animation Bar */
-.strip {
-  position: relative;
-  width: 100%;
-  /* overflow: hidden; */
-  background: #ff6b2d; /* yellow background */
-
-  z-index: 2;
-}
-
- .strip::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: -27px;
-    width: 100%;
-    height: 27px;
-    background: #1c3b2f;
-    clip-path: polygon(128% 0, 100% 0, 100% 100%, 0 162%);
-    z-index: -1;
-}
-
-.strip::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -60px; /* further down */
-  width: 100%;
-  height: 60px; /* make it taller*/
-  background: #1c3b2f;
-  clip-path: polygon(0 0, 100% 0%, 100% -35%, 0 33%);
-  z-index: -1; /* behind yellow*/
-} 
-
-.scl-con {
-  display: flex;
-  gap: 50px;
-  white-space: nowrap;
-  animation: scroll 15s linear infinite;
-  padding: 15px 0;
-  font-weight: 600;
-  color: #111;
-  font-size: 15px;
-  position: relative;
-  z-index: 3; /* text above everything */
-}
-.scl-con span {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.scroll-content span::before {
-  content: "✶";
-  font-size: 14px;
-  color: #111;
-}
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
- .tools-section h4 {
-      color: #666;
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    .tools-section h2 {
-      font-size: 2rem;
-      margin-bottom: 50px;
-      line-height: 1.4;
-    }
-
-    .tools-section h2 span {
-      color: #f9a825;
-      font-style: italic;
-      font-weight: normal;
-    }
-
-    .tools-container {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .tool-card {
-      background: #f9f9f9;
-      border-radius: 50px;
-      padding: 30px 20px;
-      width: 140px;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-
-    .tool-card:hover {
-      transform: translateY(-8px);
-    }
-
-    .tool-card img {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 15px;
-    }
-
-    .tool-card h3 {
-      font-size: 1rem;
-      margin: 10px 0 5px;
-      color: #000;
-    }
-
-    .tool-card p {
-      font-size: 0.9rem;
-      color: #333;
-      margin-top: 8px;
-    }
-
-    .tool-card .percent {
-      font-weight: bold;
-      font-size: 1rem;
-      margin-bottom: 5px;
-    }
-    .portfolio-section {
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 20px;
-    }
-    /* Section background */
-  .services {
-    color: #fff;
-    border-radius: 30px;
-
-    overflow: hidden;
-
-    margin: auto;
-
-    background-repeat: no-repeat;
-    text-align: center;
-    padding: 30px 20px 100px;
-    position: relative;
-    margin-bottom: 198px;
-}
- 
-/* Title */
-    
-.services-header h2 {
-  font-family: 'Urbanist', sans-serif;
-  font-size: 38px;
-  font-weight: 700;
-  color: #fff;
-}
-.services-header h2 span {
-  color: #ff6b2d;
-}
-.services-header p {
-  max-width: 600px;
-  margin: 15px auto 50px;
-  font-family: 'Poppins', sans-serif;
-  color: #ccc;
-  font-size: 15px;
-}
-
-/* Cards wrapper */
-.services-cards {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-/* Each card */
-
- 
-.service-card:hover {
-  transform: translateY(-8px);
-  border-color: #ff6b2d;
-}
-.service-card h3 {
-  font-family: 'Urbanist', sans-serif;
-  font-size: 20px;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-/* Image box */
-.service-img {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-}
-.service-img img {
-  width: 100%;
-  border-radius: 20px;
-  display: block;
-}
-
-/* Arrow button */
-.arrow-btn {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  background: #111a2a;
-  color: #fff;
-  font-size: 20px;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: all .3s ease;
-}
-.arrow-btn:hover {
-  background: #ff6b2d;
-}
-
-/* Slider dots */
-.dots {
-  margin-top: 40px;
-}
-.dots span {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin: 0 5px;
-  border-radius: 50%;
-  background: #666;
-  cursor: pointer;
-}
-.dots span.active {
-  background: #ff6b2d;
-  width: 25px;
-  border-radius: 20px;
-}
-
-.hire-section {
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #f4f6fa;
-      border-radius: 25px;
-    }
-
-    .hire-image {
-      position: relative;
-      flex: 1;
-    }
-
-    .hire-image img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 20px;
-      position: relative;
-      z-index: 2;
-    }
-
-
-    .hire-content {
-      flex: 1;
-      padding-left: 50px;
-    }
-
-    .hire-content h2 {
-      font-size: 36px;
-      font-weight: 700;
-      color: #2c2c2c;
-      margin: 0 0 15px;
-    }
-
-    .hire-content h2 span {
-      color: #ff914d;
-    }
-
-    .hire-content p {
-      font-size: 16px;
-      color: #888;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
-
-    .hire-stats {
-      display: flex;
-      gap: 50px;
-      margin-bottom: 30px;
-    }
-
-    .hire-stats div {
-      text-align: center;
-    }
-
-    .hire-stats h3 {
-      font-size: 28px;
-      font-weight: 700;
-      margin: 0;
-      color: #2c2c2c;
-    }
-
-    .hire-stats p {
-      font-size: 14px;
-      color: #666;
-      margin: 5px 0 0;
-    }
-
-    .hire-btn {
-      display: inline-block;
-      padding: 14px 40px;
-      border: 2px solid #000;
-      border-radius: 12px;
-      font-size: 18px;
-      font-weight: 600;
-      text-decoration: none;
-      color: #000;
-      transition: 0.3s;
-    }
-
-    .hire-btn:hover {
-      background: #000;
-      color: #fff;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hire-section {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .hire-image::before {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .hire-content {
-        padding-left: 0;
-        margin-top: 30px;
-      }
-
-      .hire-stats {
-        justify-content: center;
-      }
-    }
-    
-    .project-idea {
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    .project-idea h2 {
-      font-size: 38px;
-      font-weight: 700;
-      color: #2c2c2c;
-      margin-bottom: 40px;
-    }
-
-    .project-idea h2 span {
-      color: #ff914d;
-    }
-
-    .idea-form {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      max-width: 700px;
-      margin: 0 auto;
-      border: 2px solid #000;
-      border-radius: 50px;
-      padding: 8px;
-    }
-
-    .idea-form input {
-      flex: 1;
-      border: none;
-      outline: none;
-      padding: 15px 20px;
-      font-size: 16px;
-      border-radius: 50px;
-      font-family: 'Poppins', sans-serif;
-          margin-right: 10px;
-
-    }
-
-    .idea-form .icon {
-      background: #ffe0c9;
-      border-radius: 50%;
-      padding: 12px;
-      margin-right: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .idea-form button {
-      background: #ff914d;
-      border: none;
-      outline: none;
-      padding: 14px 35px;
-      border-radius: 50px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      color: #fff;
-      transition: 0.3s;
-    }
-
-    .idea-form button:hover {
-      background: #e56f2c;
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
-      .project-idea h2 {
-        font-size: 28px;
+      .hero {
+        padding: 20px 15px 60px;
+        margin-bottom: 100px;
       }
-
-      .idea-form {
-        flex-direction: column;
-        border-radius: 25px;
-        padding: 15px;
-      }
-
-      .idea-form input {
-        width: 100%;
-        margin-bottom: 15px;
-        border-radius: 25px;
-      }
-
-      .idea-form button {
-        width: 100%;
-        border-radius: 25px;
-      }
-    }
-      /* Outer container */
-    .skills-marquee {
-      position: relative;
-      background: #ff6600;
-      overflow: hidden;
-      
-      padding: 30px 0;
-    }
-
-    /* Marquee wrapper (to hold duplicate tracks) */
-    .skills-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 20s linear infinite;
-      background-color: #fff;
-    }
-
-    /* Duplicate wrapper for seamless loop */
-    .skills-wrapper {
-      display: flex;
-    }
-
-    /* Each skill item */
-    .skill-item {
-      display: inline-flex;
-      align-items: center;
-      font-size: 28px;
-      font-weight: 500;
-      color: #000;
-      margin: 0 40px;
-      white-space: nowrap;
-    }
-
-    .skill-item .star {
-      color: #ff914d;
-      font-size: 22px;
-      margin: 0 15px;
-    }
-
-    /* Smooth scrolling animation */
-    @keyframes marquee {
-      0%   { transform: skewY(-4deg); }
-      100% { transform: translateX(-50%); }
-    }
-
-     .portfolio-section {
-      max-width: 1100px;
-      margin: 80px auto;
-      padding: 20px;
-      text-align: center;
-    }
-
-    /* Heading */
-    .portfolio-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-
-    .portfolio-header h2 {
-      width: 62%;
-    font-size: 64px;
-    font-weight: 600;
-    color: #000;
-    font-family: 'Lufga';
-    text-align: left;
-    }
-
-    .portfolio-header h2 span {
-      color: #ff914d;
-    }
-
-    .see-all-btn {
-          background: #ff914d;
-    border: none;
-    padding: 15px 50px;
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: 20px;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.3s;
-    }
-
-    .see-all-btn:hover {
-      background: #e56f2c;
-    }
-
-    /* Slider */
-    .slider-container {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .slider-track {
-      display: flex;
-      transition: transform 0.6s ease;
-    }
-
-    .slide {
-      min-width: 50%; /* ✅ Show 2 projects per view */
-      padding: 10px;
-      box-sizing: border-box;
-    }
-
-    .slide img {
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    /* Navigation dots */
-    .dots {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-    }
-
-    .dot {
-      height: 12px;
-      width: 12px;
-      margin: 0 6px;
-      background: #666;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .dot.active {
-      background: #ff914d;
-    }
-
-    /* Tags */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin: 35px 0 35px;
-    }
-
-    .tag {
-      padding: 15px 25px;
-    background: #fff;
-    color: #000;
-    border-radius: 25px;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.3s;
-    }
-
-    .tag:hover {
-      background: #ff914d;
-      color: #fff;
-    }
-
-    /* Project description */
-    .project-details h3 {
-      font-size: 42px;
-      margin-bottom: 15px;
-      
-    }
-
-    .project-details h3 span {
-      color: #ff914d;
-    }
-
-    .project-details p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #000;
-      max-width: 800px;
-      margin: 0 auto;
-      font-family: 'Lufga';
-    }
-
-    .arrow-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 8px;
-      background: #ff914d;
-      color: #fff;
-      font-size: 22px;
-      font-weight: 700;
-      padding: 6px 10px;
-      border-radius: 50%;
-      text-decoration: none;
-      transition: 0.3s;
-          transform: rotate(-42deg);
-    }
-
-    .arrow-link:hover {
-      background: #e56f2c;
-    }
-
-     .footer {
-      background: #1e1e1e;
-      padding: 50px 80px;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-    }
-
-    .footer-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-
-    .footer-header h2 {
-      font-size: 38px;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .hire-btn {
-      background: #ff914d;
-      color: #fff;
-      border: none;
-      padding: 14px 35px;
-      border-radius: 30px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .hire-btn:hover {
-      background: #e56f2c;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      padding: 30px 0;
-      border-top: 1px solid #444;
-      border-bottom: 1px solid #444;
-    }
-
-    /* Left Side */
-    .footer-left {
-      max-width: 300px;
-    }
-
-    .footer-left .flogo {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-
-    .flogo-icon {
-      background: #ff914d;
-      color: #fff!important ;
-      font-weight: 700;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 10px;
-      font-size: 18px;
-    }
-    .flogo h3{
-      color: #fff!important ;
-    }
-
-    .footer-left p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #ccc;
-      margin-bottom: 15px;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 12px;
-    }
-
-    .social-icons a {
-      font-size: 18px;
-      color: #fff;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .social-icons a:hover {
-      color: #ff914d;
-    }
-
-    /* Middle */
-    .footer-middle {
-      display: flex;
-      gap: 80px;
-    }
-
-    .footer-column h4 {
-      color: #ff914d;
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 15px;
-    }
-
-    .footer-column ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-column ul li {
-      margin-bottom: 10px;
-      color: #fff;
-    }
-
-    .footer-column ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-
-    .footer-column ul li a:hover {
-      color: #ff914d;
-    }
-
-    /* Right */
-    .footer-right h4 {
-      color: #ff914d;
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 15px;
-    }
-
-    .subscribe {
-      display: flex;
-      border-radius: 25px;
-      overflow: hidden;
-      border: 1px solid #ff914d;
-    }
-
-    .subscribe input {
-      border: none;
-      padding: 12px 15px;
-      font-size: 14px;
-      flex: 1;
-      outline: none;
-    }
-
-    .subscribe button {
-      background: #ff914d;
-      border: none;
-      color: #fff;
-      font-size: 18px;
-      padding: 0 20px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .subscribe button:hover {
-      background: #e56f2c;
-    }
-
-    /* Bottom */
-    .footer-bottom {
-      margin-top: 25px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      color: #aaa;
-    }
-
-    .footer-bottom a {
-      text-decoration: none;
-      color: #aaa;
-      margin-left: 10px;
-      transition: 0.3s;
-    }
-
-    .footer-bottom a:hover {
-      color: #ff914d;
-    }
-
-    @media (max-width: 900px) {
-      .footer-content {
-        flex-direction: column;
-        gap: 30px;
-      }
-
-      .footer-middle {
-        gap: 40px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
+      .hero h1 { font-size: 40px; line-height: 1.2; }
+      .vector-bottom, .vector-top { display: none; }
+      .hero-image { width: 100%; margin: 20px auto; }
+      .hero-image img { width: 100%; height: auto; }
+      .btns { top: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+      .btn { padding: 12px 24px; font-size: 14px; }
+      .quote, .exp {
+        position: static;
         text-align: center;
-        gap: 10px;
+        margin: 20px auto;
+        transform: none;
+        max-width: 100%;
       }
+      .exp p { font-size: 28px; }
+      .exp span { font-size: 16px; margin: 0; }
     }
-    /* Slider wrapper */
-.slider {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 20px;
-  width: 100%;
-  max-width: 1288px; /* for large screens */
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
 
-/* Hide scrollbar */
-.slider::-webkit-scrollbar {
-  display: none;
-}
-
-.card-container {
-  position: relative;
-  flex: 0 0 auto;
-  width: 413px;
-  height: 508px;
-  scroll-snap-align: center;
-}
-
-/* Card shape */
-.card {
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid #fff;
-  border-radius: 20px;
-  /* clip-path: path("M 20 0 H 396 A 20 20 0 0 1 416 20 V 200 A 20 20 0 0 1 396 220 H 216 A 20 20 0 0 0 196 240 V 488 A 20 20 0 0 1 176 508 H 20 A 20 20 0 0 1 0 488 V 20 A 20 20 0 0 1 20 0 Z"); */
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  color: #fff;
-  overflow: hidden;
-
-  box-shadow: 
-    0 -4px 8px rgba(255, 255, 255, 0.4),
-    0 -8px 16px rgba(0, 0, 0, 0.6);
-}
-
-.card-heading {
-  width: 100%;
-  text-align: left;
-  padding: 16px 20px 12px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.6);
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.card-images {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding-top: 20px;
-  justify-content: center;
-  align-items: center;
-}
-
-.card-images img {
-  width: 480px;
-  height: 424px;
-  border-radius: 15px;
-  object-fit: cover;
-  box-shadow: 
-    0 -4px 10px rgba(255, 255, 255, 0.4),  /* top glow */
-    0 -8px 20px rgba(0, 0, 0, 0.6);        /* deeper black shadow */
-}
-
-.card-button {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #0d1b2a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  border: 2px solid #fff;
-}
-
-.card-button svg {
-  width: 24px;
-  height: 24px;
-  stroke: #fff;
-  stroke-width: 2;
-  fill: none;
-}
-
-/* Dots Navigation */
-.dots {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.dots button {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.dots button.active {
-  background: #fff;
-}
-
-/* Responsive */
-@media (max-width: 1300px) {
-  .slider {
-    max-width: 860px; /* show 2 cards */
-  }
-}
-@media (max-width: 900px) {
-  .slider {
-    max-width: 416px; /* show 1 card */
-  }
-}
-     
-</style>
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .btn { padding: 10px 20px; font-size: 13px; }
+      .stars { font-size: 20px; }
+      .exp p { font-size: 22px; }
+    }
+  </style>
 </head>
 <body>
+
   <!-- Navbar -->
   <nav>
+    <div class="logo">JC</div>
+    <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <ul>
       <li><a href="#" class="active">Home</a></li>
       <li><a href="#">About</a></li>
       <li><a href="#">Service</a></li>
-    </ul>
-    <div class="logo">JC</div>
-    <ul>
       <li><a href="#">Resume</a></li>
       <li><a href="#">Project</a></li>
       <li><a href="#">Contact</a></li>
@@ -1427,467 +340,30 @@ section.tools-section {
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class = "container"> 
     <div class="hello">
       Hello!
-      <img src="./Vector 1.png" alt="decor" class="vector-top">
+      <img src="./Vector1.png" alt="decor" class="vector-top">
     </div>
     <h1>
       I’m <span>Sachin</span>,<br>Ui/UX Designer
-      <img src="./Vector 2.png" alt="decor" class="vector-bottom">
+      <img src="./Vector2.png" alt="decor" class="vector-bottom">
     </h1>
-   <div class="quote">
+    <div class="quote">
       <p>Passionate and innovative UI/UX & Graphic Designer with 4+ years of experience in crafting visually compelling designs and seamless digital experiences.</p>
     </div>
     <div class="hero-image">
-    <!--       <div class="circle"></div> -->
-      <img src="./Frame 57.png" alt="Sachin">
+      <img src="./Frame57.png" alt="Sachin">
     </div>
-
- <div class="btns">
-  <a href="#" class="btn portfolio">Portfolio <span class="arrow">↗</span></a>
-  <a href="#" class="btn hire">Hire Me</a>
-</div>
-
-
-    <!-- Side info -->
+    <div class="btns">
+      <a href="#" class="btn portfolio">Portfolio <span class="arrow">↗</span></a>
+      <a href="#" class="btn hire">Hire Me</a>
+    </div>
     <div class="exp">
       <div class="stars">★★★★★</div>
       <p>4+ Years</p>
-        <span>Experience</span>
-    </div>
-
+      <span>Experience</span>
     </div>
   </section>
-    <!-- Scroll Bar -->
-<div class="strip">
-  <div class="strip-con">
-<div class="scroll-bar">
-  <div class="scroll-content">
-    <div class="scl-con">
-    <span>App Design</span>
-    <span>Website Design</span>
-    <span>Dashboard</span>
-    <span>Wireframe</span>
-    <span>App Design</span>
-    <span>Website Design</span>
-    <span>Dashboard</span>
-    <span>Wireframe</span>
-        <span>App Design</span>
-    <span>Website Design</span>
-    <span>Dashboard</span>
-    <span>Wireframe</span>
-    </div>
-</div>
-</div>
-</div>
-</div>
-<!-- cards section start -->
-   <section class="services" style="background-image: url('./Frame 58bg.png');">
-  <div class="services-header">
-    <h2>My <span>Services</span></h2>
-    <p>I create modern, user-friendly designs that blend creativity with functionality. From UI/UX to web and landing pages, I deliver solutions that engage and convert.</p>
-  </div>
-<!-- Slider -->
-  <div class="slider" id="slider">
-    <div class="card-container">
-      <div class="card">
-        <div class="card-heading">UI/UX Design</div>
-        <div class="card-images">
-          <img src="https://picsum.photos/200?random=1" alt="img1">
-        </div>
-      </div>
-      <div class="card-button">
-        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-      </div>
-    </div>
-
-    <div class="card-container">
-      <div class="card">
-        <div class="card-heading">Web Development</div>
-        <div class="card-images">
-          <img src="https://picsum.photos/200?random=3" alt="img3">
-        </div>
-      </div>
-      <div class="card-button">
-        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-      </div>
-    </div>
-
-    <div class="card-container">
-      <div class="card">
-        <div class="card-heading">Graphic Design</div>
-        <div class="card-images">
-          <img src="https://picsum.photos/200?random=5" alt="img5">
-        </div>
-      </div>
-      <div class="card-button">
-        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-      </div>
-    </div>
-
-    <div class="card-container">
-      <div class="card">
-        <div class="card-heading">App Design</div>
-        <div class="card-images">
-          <img src="https://picsum.photos/200?random=7" alt="img7">
-        </div>
-      </div>
-      <div class="card-button">
-        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- cards section start -->
-
-
-  <section class ="experience">
-     <h2 class="section-title">My <span>Work Experience</span></h2>
-
-  <div class="timeline">
-
-    <!-- Item 1 -->
-    <div class="timeline-item">
-      <div class="timeline-left">
-        <h3>Fotografik Enterprises Pvt. Ltd.</h3>
-        <p>March 2019 – June 2022</p>
-      </div>
-      <div class="timeline-center">
-        <div class="timeline-circle"></div>
-      </div>
-      <div class="timeline-right">
-        <h4>Sr. Graphic Designer</h4>
-        <p>Led design projects for branding, social media creatives, and marketing campaigns, delivering visually impactful content.</p>
-      </div>
-    </div>
-
-    <!-- Item 2 -->
-    <div class="timeline-item">
-      <div class="timeline-left">
-        <h3>Aether Software Solution</h3>
-        <p>June 2022 – January 2023</p>
-      </div>
-      <div class="timeline-center">
-        <div class="timeline-circle dark"></div>
-      </div>
-      <div class="timeline-right">
-        <h4> Graphic & UI/UX Designer</h4>
-        <p>Designed engaging UI components and graphics, ensuring cohesive digital experiences.</p>
-      </div>
-    </div>
-
-    <!-- Item 3 -->
-    <div class="timeline-item">
-      <div class="timeline-left">
-        <h3>Tech Arch Softwares Pvt. Ltd.</h3>
-        <p>Sept 2023 – July 2024</p>
-      </div>
-      <div class="timeline-center">
-        <div class="timeline-circle"></div>
-      </div>
-      <div class="timeline-right">
-        <h4>UI/UX Designer</h4>
-        <p>Created user-friendly wireframes, prototypes, and responsive layouts across web and mobile.</p>
-      </div>
-    </div>
-    <!-- Item 4 -->
-    <div class="timeline-item">
-      <div class="timeline-left">
-        <h3>Qode Maker</h3>
-        <p>July 2024 – March 2025</p>
-      </div>
-      <div class="timeline-center">
-        <div class="timeline-circle"></div>
-      </div>
-      <div class="timeline-right">
-        <h4>UI/UX Designer</h4>
-        <p>Improved user journeys with interactive and visually consistent design solutions.</p>
-      </div>
-    </div>
-     <!-- Item 5 -->
-    <div class="timeline-item">
-      <div class="timeline-left">
-        <h3>2aSquare Infotech Pvt. Ltd.</h3>
-        <p>JApril 2025 – Present</p>
-      </div>
-      <div class="timeline-center">
-        <div class="timeline-circle"></div>
-      </div>
-      <div class="timeline-right">
-        <h4>UI/UX Designer</h4>
-        <p>Currently delivering modern UI/UX solutions, focusing on usability and design systems.</p>
-      </div>
-    </div>
-  </div>
-  
-  </div>
-
-  </section>
-
-  <section class="tools-section">
-    <h4>— My Favorite Tools</h4>
-    <h2><span>Exploring the Tools</span><br>Behind My Designs</h2>
-
-    <div class="tools-container">
-      <div class="tool-card">
-        <img src="https://logo.svgcdn.com/l/figma.svg" alt="Figma">
-       
-        <h3>Figma</h3>
-      </div>
-
-      <div class="tool-card">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/adobexd.svg" alt="Adobe XD">
-       
-        <h3>Adobe XD</h3>
-      </div>
-
-      <div class="tool-card">
-        <img src="https://cdn.worldvectorlogo.com/logos/adobe-photoshop-2.svg" alt="Photoshop">
-        
-        <h3>Photoshop</h3>
-      </div>
-
-      <div class="tool-card">
-        <img src="https://cdn.worldvectorlogo.com/logos/after-effects-1.svg" alt="After Effects">
-        
-        <h3>After Effects</h3>
-      </div>
-
-      <!-- <div class="tool-card">
-        <img src="https://cdn.worldvectorlogo.com/logos/storybook-icon.svg" alt="Storybook">
-        <div class="percent">90%</div>
-        <h3>Storybook</h3>
-      </div> -->
-
-      <div class="tool-card">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/adobeillustrator.svg" alt="Adobe Illustrator">
-        
-        <h3>Adobe Illustrator</h3>
-      </div>
-    </div>
-  </section>
- 
-
-
-<section class="hire-section">
-    <div class="hire-image">
-      <img src="your-image.png" alt="Hire me">
-    </div>
-    <div class="hire-content">
-      <h2>Why <span>Hire me</span>?</h2>
-      <p>With 4+ years of experience in UI/UX and graphic design, I craft user-friendly, visually engaging solutions that drive results. I blend creativity with functionality to deliver designs that truly connect with users.</p>
-      <div class="hire-stats">
-        <div>
-          <h3>450+</h3>
-          <p>Project Completed</p>
-        </div>
-        <div>
-          <h3>450+</h3>
-          <p>Project Completed</p>
-        </div>
-      </div>
-      <a href="#" class="hire-btn">Hire me</a>
-    </div>
-  </section>
-    <section class="project-idea">
-    <h2>Have an Awsome Project Idea? <span>Let’s Discuss</span></h2>
-    <form class="idea-form">
-      <div class="icon">
-        ✉️
-      </div>
-      <input type="email" placeholder="Enter your email" required>
-      <button type="submit">Send</button>
-    </form>
-  </section>
-    <section class="skills-marquee">
-    <div class="skills-track">
-      <!-- First set -->
-      <div class="skills-wrapper">
-        <span class="skill-item">UX Design <span class="star">✦</span></span>
-        <span class="skill-item">App Design <span class="star">✦</span></span>
-        <span class="skill-item">Dashboard <span class="star">✦</span></span>
-        <span class="skill-item">Wireframe <span class="star">✦</span></span>
-        <span class="skill-item">User Research <span class="star">✦</span></span>
-      </div>
-
-      <!-- Duplicate set for infinite loop -->
-      <div class="skills-wrapper">
-        <span class="skill-item">UX Design <span class="star">✦</span></span>
-        <span class="skill-item">App Design <span class="star">✦</span></span>
-        <span class="skill-item">Dashboard <span class="star">✦</span></span>
-        <span class="skill-item">Wireframe <span class="star">✦</span></span>
-        <span class="skill-item">User Research <span class="star">✦</span></span>
-      </div>
-    </div>
-  </section>
-   <section class="portfolio-section">
-    <!-- Heading -->
-    <div class="portfolio-header">
-      <h2>Lets have a look at my <span>Portfolio</span></h2>
-      <button class="see-all-btn">See All</button>
-    </div>
-
-    <!-- Slider -->
-    <div class="slider-container">
-      <div class="slider-track" id="slider">
-        <div class="slide">
-          <img src="project1.png" alt="Project 1">
-        </div>
-        <div class="slide">
-          <img src="project2.png" alt="Project 2">
-        </div>
-        <div class="slide">
-          <img src="project3.png" alt="Project 3">
-        </div>
-        <div class="slide">
-          <img src="project4.png" alt="Project 4">
-        </div>
-      </div>
-    </div>
-
-    <!-- Dots -->
-    <div class="dots">
-      <div class="dot active" onclick="moveSlide(0)"></div>
-      <div class="dot" onclick="moveSlide(1)"></div>
-    </div>
-
-    <!-- Tags -->
-    <div class="tags">
-      <div class="tag">Landing Page</div>
-      <div class="tag">Product Design</div>
-      <div class="tag">Animation</div>
-      <div class="tag">Glassmorphism</div>
-      <div class="tag">Cards</div>
-    </div>
-
-    <!-- Project description -->
-    <div class="project-details">
-      <h3>Lirante - <span>Food Delivery Solution</span> <a href="#" class="arrow-link">➝</a></h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis orci elementum egestas lobortis.</p>
-    </div>
-  </section>
-    <footer class="footer">
-    <!-- Header -->
-    <div class="footer-header">
-      <h2>Lets Connect there</h2>
-      <button class="hire-btn">Hire me →</button>
-    </div>
-
-    <!-- Content -->
-    <div class="footer-content">
-      <!-- Left -->
-      <div class="footer-left">
-        <div class="flogo">
-          <div class="flogo-icon">JC</div>
-          <h3>JCREA</h3>
-        </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim.</p>
-        <div class="social-icons">
-          <a href="#">🌐</a>
-          <a href="#">▶️</a>
-          <a href="#">💬</a>
-          <a href="#">📸</a>
-          <a href="#">🐦</a>
-        </div>
-      </div>
-
-      <!-- Middle -->
-      <div class="footer-middle">
-        <div class="footer-column">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Service</a></li>
-            <li><a href="#">Resume</a></li>
-            <li><a href="#">Project</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h4>Contact</h4>
-          <ul>
-            <li>+20 11 43 63 73 41</li>
-            <li>fawzisayed1209@gmail.com</li>
-            <li>fawziuix.com</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Right -->
-      <div class="footer-right">
-        <h4>Get the latest information</h4>
-        <form class="subscribe">
-          <input type="email" placeholder="Email Address" required>
-          <button type="submit">➝</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Bottom -->
-    <div class="footer-bottom">
-      <p>Copyright © 2023 Fawziuix. All Rights Reserved.</p>
-      <p>
-        <a href="#">User Terms & Conditions</a> | 
-        <a href="#">Privacy Policy</a>
-      </p>
-    </div>
-  </footer>
-
-
- 
- 
-    <script>
-    let currentIndex = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    const slider = document.getElementById('slider');
-
-    // ✅ Each move = 2 slides
-    function moveSlide(index) {
-      currentIndex = index;
-      slider.style.transform = `translateX(${-100 * index}%)`;
-
-      dots.forEach(dot => dot.classList.remove('active'));
-      dots[index].classList.add('active');
-    }
-  </script>
-<script>
-const slider = document.getElementById("slider");
-const cards = slider.querySelectorAll(".card-container");
-const dotsContainer = document.getElementById("dots");
-
-function updateDots() {
-  dotsContainer.innerHTML = "";
-  const visibleCards = Math.floor(slider.offsetWidth / (cards[0].offsetWidth + 20));
-  const totalSlides = cards.length - visibleCards + 1;
-
-  for (let i = 0; i < totalSlides; i++) {
-    const dot = document.createElement("button");
-    if (i === 0) dot.classList.add("active");
-    dot.addEventListener("click", () => {
-      slider.scrollTo({
-        left: i * (cards[0].offsetWidth + 20),
-        behavior: "smooth"
-      });
-    });
-    dotsContainer.appendChild(dot);
-  }
-}
-
-updateDots();
-window.addEventListener("resize", updateDots);
-
-const dots = () => dotsContainer.querySelectorAll("button");
-
-slider.addEventListener("scroll", () => {
-  const scrollLeft = slider.scrollLeft;
-  const cardWidth = cards[0].offsetWidth + 20;
-  const index = Math.round(scrollLeft / cardWidth);
-
-  dots().forEach((dot, i) => dot.classList.toggle("active", i === index));
-});
-</script>
 
 </body>
 </html>
