@@ -1626,10 +1626,11 @@ section.experience {
     <!-- Right -->
     <div class="footer-right">
       <h4>Get the latest information</h4>
-      <form class="subscribe">
-        <input type="email" placeholder="Email Address" required>
-        <button type="submit">➝</button>
-      </form>
+    <form id="subscribe-form" class="subscribe">
+  <input type="email" name="subscriber_email" placeholder="Email Address" required>
+  <button type="submit">➝</button>
+</form>
+<p id="subscribe-msg"></p>
     </div>
   </div>
 
@@ -1658,6 +1659,20 @@ section.experience {
   });
 </script>
 
+<script>
+  document.getElementById("subscribe-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_s6bspwr", "template_gk5dzgp", this)
+      .then(() => {
+        document.getElementById("subscribe-msg").innerText = "✅ Thanks for subscribing!";
+        this.reset();
+      }, (error) => {
+        document.getElementById("subscribe-msg").innerText = "❌ Subscription failed. Try again.";
+        console.error("EmailJS Error:", error);
+      });
+  });
+</script>
 
 
 <script>
