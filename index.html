@@ -338,14 +338,14 @@ body {
 }
 
 @media (max-width: 768px) { /* tablets + large mobiles */
-  .strip::before { top: -18px; height: 22px; clip-path: polygon(120% 0, 100% 0, 100% 100%, 0 140%); }
-  .strip::after  { bottom: -20px; height: 22px; clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%); }
+  .strip::before { top: -18px; height: 22px; clip-path: polygon(120% 0, 100% 0, 100% 100%, 0 165%); }
+  .strip::after  { bottom: -20px; height: 22px; clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
   .scl-con { gap: 25px; font-size: 13px; padding: 10px 0; animation-duration: 11s; }
 }
 
 @media (max-width: 480px) { /* small mobiles */
-  .strip::before { top: -12px; height: 18px; }
-  .strip::after  { bottom: -12px; height: 18px; }
+  .strip::before { top: -17px; height: 18px; }
+  .strip::after  { bottom: -18px; height: 18px; }
   .scl-con { gap: 15px; font-size: 12px; padding: 8px 0; animation-duration: 9s; }
 }
 
@@ -354,12 +354,13 @@ body {
     /* ===== SERVICES ===== */
 .services {
   color: #fff;
-  border-radius: 30px;
+  border-radius: 60px;
   background-repeat: no-repeat;
   text-align: center;
   padding: 60px 20px 100px;
   position: relative;
   margin-bottom: 150px;
+  margin-top:20px;
 }
 
 .services-header h2 {
