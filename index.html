@@ -351,105 +351,129 @@ body {
 
 
     /* ---------------- SERVICES ---------------- */
-    /* ===== SERVICES ===== */
-.services {
-  color: #fff;
-  border-radius: 60px;
-  background-repeat: no-repeat;
-  text-align: center;
-  padding: 60px 20px 100px;
-  position: relative;
-  margin-bottom: 150px;
-  margin-top:20px;
-}
+    .services {
+      color: #fff;
+      border-radius: 20px;
+      background-repeat: no-repeat;
+      text-align: center;
+      padding: 60px 20px 100px;
+      position: relative;
+      margin: 40px auto 80px;
+      max-width: 1280px;
+    }
 
-.services-header h2 {
-  font-family: 'Urbanist', sans-serif;
-  font-size: 38px;
-  font-weight: 700;
-  color: #fff;
-}
-.services-header h2 span {
-  color: #ff6b2d;
-}
-.services-header p {
-  max-width: 600px;
-  margin: 15px auto 50px;
-  font-family: 'Poppins', sans-serif;
-  color: #ccc;
-  font-size: 15px;
-}
+    .services-header h2 {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+    .services-header h2 span { color: var(--accent); }
+    .services-header p {
+      max-width: 700px;
+      margin: 15px auto 40px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
 
-/* Slider Layout */
-.slider-container {
-  max-width: 1200px;
-  margin: auto;
-  overflow: hidden;
-  position: relative;
-}
-.slider {
-  display: flex;
-  transition: transform 0.6s ease;
-}
-.card-container {
-  min-width: calc(100% / 3);
-  padding: 15px;
-  box-sizing: border-box;
-}
-.card {
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 20px;
-  transition: transform 0.3s;
-  height: 100%;
-}
-.card:hover {
-  transform: translateY(-8px);
-}
-.card-heading {
-  font-family: 'Urbanist', sans-serif;
-  font-size: 20px;
-  margin-bottom: 15px;
-  text-align: left;
-}
-.card-images img {
-  width: 100%;
-  border-radius: 15px;
-  display: block;
-}
+    /* Slider Layout */
+    .slider-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden; /* important: hide overflow so sliding works */
+      position: relative;
+    }
 
-/* Dots */
-.dots {
-  margin-top: 30px;
-  text-align: center;
-}
-.dots span {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin: 0 6px;
-  border-radius: 50%;
-  background: #666;
-  cursor: pointer;
-  transition: all .3s ease;
-}
-.dots span.active {
-  background: #ff6b2d;
-  width: 25px;
-  border-radius: 20px;
-}
+    .slider {
+      display: flex;
+      transition: transform 0.6s ease;
+      will-change: transform;
+    }
 
-/* Responsive */
-@media (max-width: 992px) {
-  .card-container { min-width: 50%; }
-}
-@media (max-width: 600px) {
-  .card-container { min-width: 100%; }
-}
-    @media (max-width: 480px) { /* small mobiles */
-      .services {
-        margin-bottom: 76px;
+    /* default for desktop: 3 cards visible (JS also sets this) */
+    .card-container {
+      flex: 0 0 calc(100% / 3);
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 18px;
+      transition: transform 0.25s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card:hover { transform: translateY(-6px); }
+
+    .card-heading {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: left;
+      color: #fff;
+    }
+
+    .card-images img {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* Dots */
+    .dots {
+      margin-top: 20px;
+      text-align: center;
+      user-select: none;
+    }
+    .dots span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 6px;
+      border-radius: 50%;
+      background: #666;
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+    .dots span.active {
+      background: var(--accent);
+      width: 26px;
+      border-radius: 14px;
+    }
+
+    /* small adjustments for visual spacing on smaller screens */
+    @media (max-width: 1200px) {
+      .services { padding-bottom: 80px; }
+      .services-header p { max-width: 600px; }
+    }
+
+    @media (max-width: 992px) {
+      .card-container { flex: 0 0 50%; } /* fallback: 2 per view */
+      .services { padding-bottom: 70px; }
+      .services-header h2 { font-size: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      .card-container { flex: 0 0 50%; } /* typically 2 per view on tablets */
+      .services { padding: 40px 14px 60px; border-radius: 0; margin-bottom: 40px; }
+      .services-header h2 { font-size: 28px; }
+      .services-header p { font-size: 14px; color: #cfcfcf; }
+    }
+
+    @media (max-width: 480px) {
+      .card-container { flex: 0 0 100%; } /* fallback: 1 per view on very small phones */
+      .services { padding: 28px 12px 48px; margin-bottom: 30px; }
+      .services-header h2 { font-size: 22px; }
+      .services-header p { font-size: 13px; max-width: 320px; }
+      .dots span { margin: 0 4px; }
+      .dots span.active { width: 18px; }
     }
 /* ===== WORK EXPERIENCE ===== */
 section.experience {
@@ -1233,64 +1257,69 @@ section.experience {
 
   <!-- Services Section -->
   <section class="services" style="background-image: url('./Frame 58bg.png');">
-  <div class="services-header">
-    <h2>My <span>Services</span></h2>
-    <p>I create modern, user-friendly designs that blend creativity with functionality. From UI/UX to web and landing pages, I deliver solutions that engage and convert.</p>
-  </div>
-
-  <!-- Slider -->
-  <div class="slider-container">
-    <div class="slider" id="slider">
-      <div class="card-container">
-        <div class="card">
-          <div class="card-heading">UI/UX Design</div>
-          <div class="card-images">
-            <img src="https://picsum.photos/400?random=1" alt="img1">
-          </div>
-        </div>
-      </div>
-
-      <div class="card-container">
-        <div class="card">
-          <div class="card-heading">Web Development</div>
-          <div class="card-images">
-            <img src="https://picsum.photos/400?random=2" alt="img2">
-          </div>
-        </div>
-      </div>
-
-      <div class="card-container">
-        <div class="card">
-          <div class="card-heading">Graphic Design</div>
-          <div class="card-images">
-            <img src="https://picsum.photos/400?random=3" alt="img3">
-          </div>
-        </div>
-      </div>
-
-      <div class="card-container">
-        <div class="card">
-          <div class="card-heading">App Design</div>
-          <div class="card-images">
-            <img src="https://picsum.photos/400?random=4" alt="img4">
-          </div>
-        </div>
-      </div>
-
-      <div class="card-container">
-        <div class="card">
-          <div class="card-heading">Landing Pages</div>
-          <div class="card-images">
-            <img src="https://picsum.photos/400?random=5" alt="img5">
-          </div>
-        </div>
-      </div>
+    <div class="services-header">
+      <h2>My <span>Services</span></h2>
+      <p>I create modern, user-friendly designs that blend creativity with functionality. From UI/UX to web and landing pages, I deliver solutions that engage and convert.</p>
     </div>
 
-    <!-- Slider Dots -->
-    <div class="dots" id="dots"></div>
-  </div>
-</section>
+    <!-- Slider -->
+    <div class="slider-container">
+      <div class="slider" id="slider">
+        <div class="card-container">
+          <div class="card">
+            <div class="card-heading">UI/UX Design</div>
+            <div class="card-images">
+              <img src="https://picsum.photos/400?random=1" alt="img1">
+            </div>
+            <div class="card-desc">Research, wireframes, high-fidelity prototypes and usability testing.</div>
+          </div>
+        </div>
+
+        <div class="card-container">
+          <div class="card">
+            <div class="card-heading">Web Development</div>
+            <div class="card-images">
+              <img src="https://picsum.photos/400?random=2" alt="img2">
+            </div>
+            <div class="card-desc">Responsive websites, CMS integration, performance & SEO basics.</div>
+          </div>
+        </div>
+
+        <div class="card-container">
+          <div class="card">
+            <div class="card-heading">Graphic Design</div>
+            <div class="card-images">
+              <img src="https://picsum.photos/400?random=3" alt="img3">
+            </div>
+            <div class="card-desc">Branding, social creatives and print-ready assets.</div>
+          </div>
+        </div>
+
+        <div class="card-container">
+          <div class="card">
+            <div class="card-heading">App Design</div>
+            <div class="card-images">
+              <img src="https://picsum.photos/400?random=4" alt="img4">
+            </div>
+            <div class="card-desc">Mobile-first UI, prototypes and handoff-ready specs.</div>
+          </div>
+        </div>
+
+        <div class="card-container">
+          <div class="card">
+            <div class="card-heading">Landing Pages</div>
+            <div class="card-images">
+              <img src="https://picsum.photos/400?random=5" alt="img5">
+            </div>
+            <div class="card-desc">Conversion-focused landing pages & A/B-ready content blocks.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slider Dots -->
+      <div class="dots" id="dots" aria-hidden="false"></div>
+    </div>
+  </section>
 <section class="experience">
   <h2 class="section-title">My <span>Work Experience</span></h2>
 
@@ -1592,6 +1621,108 @@ function updateDots() {
   });
 }
 </script>
+  <!-- JS: Responsive slider with dots and swipe -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slider = document.getElementById('slider');
+      const sliderContainer = document.querySelector('.slider-container');
+      const cardContainers = Array.from(document.querySelectorAll('.card-container'));
+      const dotsContainer = document.getElementById('dots');
+
+      let currentIndex = 0;
+      let cardsPerView = calcCardsPerView();
+      let totalCards = cardContainers.length;
+      let totalPages = Math.ceil(totalCards / cardsPerView);
+
+      function calcCardsPerView() {
+        const w = window.innerWidth;
+        if (w <= 480) return 1;    // small phones
+        if (w <= 768) return 2;    // tablets & small laptops
+        if (w <= 992) return 2;    // medium laptops
+        return 3;                  // large desktop
+      }
+
+      function setCardFlexBasis() {
+        cardsPerView = calcCardsPerView();
+        const basis = 100 / cardsPerView;
+        cardContainers.forEach(c => {
+          c.style.flex = `0 0 ${basis}%`;
+        });
+      }
+
+      function createDots() {
+        dotsContainer.innerHTML = '';
+        totalPages = Math.ceil(totalCards / cardsPerView);
+        for (let i = 0; i < totalPages; i++) {
+          const dot = document.createElement('span');
+          dot.addEventListener('click', () => goToSlide(i));
+          if (i === currentIndex) dot.classList.add('active');
+          dotsContainer.appendChild(dot);
+        }
+        updateDots();
+      }
+
+      function updateDots() {
+        const dots = Array.from(dotsContainer.querySelectorAll('span'));
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === currentIndex);
+        });
+      }
+
+      function goToSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalPages) index = totalPages - 1;
+        currentIndex = index;
+
+        // shift by one container width per page:
+        const shiftPx = index * sliderContainer.clientWidth;
+        slider.style.transform = `translateX(-${shiftPx}px)`;
+        updateDots();
+      }
+
+      // touch / swipe support
+      let startX = 0;
+      sliderContainer.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      }, {passive:true});
+
+      sliderContainer.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) goToSlide(currentIndex + 1);
+          else goToSlide(currentIndex - 1);
+        }
+      });
+
+      // resize handling (debounced)
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          const oldCardsPerView = cardsPerView;
+          setCardFlexBasis();
+          // recalc pages and clamp index
+          totalPages = Math.ceil(totalCards / cardsPerView);
+          if (currentIndex >= totalPages) currentIndex = totalPages - 1;
+          createDots();
+          // re-position slider so layout remains consistent
+          goToSlide(currentIndex);
+        }, 120);
+      });
+
+      // initial setup
+      setCardFlexBasis();
+      createDots();
+      goToSlide(0);
+
+      // Optional: allow keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
+        if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
+      });
+    });
+  </script>
 
 </body>
 </html>
