@@ -10,6 +10,8 @@
   <style>
     body{
             background-color: #FFF7E9;
+         overflow-x: hidden;          /* hides only the side-to-side scrollbar */
+
     }
     /* ---------------- NAVBAR ---------------- */
    /* ---------------- NAVBAR ---------------- */
@@ -252,43 +254,46 @@ nav {
     }
 
 
-    /* ======= SCROLL STRIP (FIXED: green strips visible) ======= */
-    .strip{
-      position: relative;
-      width:100%;
-      background:#ff6b2d; /* yellow center */
-      z-index:2;
-      overflow: visible; /* allow the green pseudo elements to extend outside */
-    }
+   /* ======= SCROLL STRIP (FIXED: green strips visible) ======= */
+.strip {
+  position: relative;
+  width: 100%;
+  background: #ff6b2d;
+  z-index: 2;
+  overflow: visible;           /* keep pseudo elements visible */
+}
 
-    /* GREEN TOP SHAPE */
-    .strip::before{
-      content:"";
-      position:absolute;
-      left:0;
-      top:-39px;        /* move up so it sits above the yellow bar */
-      width:100%;
-      height:40px;
-      background:#1c3b2f; /* green */
-      clip-path: polygon(128% 0, 100% 0, 100% 100%, 0 162%);
-      z-index:1; /* below the text but above page background */
-    }
+/* GREEN TOP SHAPE */
+.strip::before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: -14px;
+    width: 100%;
+    height: 15px;
+    background: #1c3b2f;
+    clip-path: polygon(0 187%, 100% 0, 100% 100%, 0 100%);
+    z-index: 1;
+}
 
-    /* GREEN BOTTOM SHAPE */
-    .strip::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-60px;
-      width:100%;
-      height:60px;
-      background:#1c3b2f;
-      clip-path: polygon(0 0, 100% 0, 100% -35%, 0 33%);
-      z-index:1;
-    }
+/* GREEN BOTTOM SHAPE */
+.strip::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -40px;
+    width: 100%;
+    height: 40px;
+    background: #1c3b2f;
+    clip-path: polygon(0 0, 100% 0, 49% 0%, 0 47%);
+    z-index: 1;
+}
+/* scrolling content sits above the green & yellow */
+.scroll-content, .scl-con {
+  position: relative;
+  z-index: 2;
+}
 
-    /* scrolling content sits above the green & yellow */
-    .scroll-content, .scl-con{ position:relative; z-index:2; }
 
     .scl-con{
       display:flex; gap:50px; white-space:nowrap;
@@ -1181,6 +1186,7 @@ section.experience {
       </div>
     </div>
   </div>
+
 
   <!-- Services Section -->
   <section class="services" style="background-image: url('./Frame 58bg.png');">
