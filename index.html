@@ -254,18 +254,16 @@ nav {
     }
 
 
-   /* ======= SCROLL STRIP (FIXED: green strips visible) ======= */
-.strip {
+  .strip {
   position: relative;
   width: 100%;
   background: #ff6b2d;
   z-index: 2;
-  overflow: visible; /* allow pseudo elements outside */
+  overflow: visible; /* allow before/after shapes outside */
 }
 
-/* Stop only horizontal scrollbars */
 body {
-  overflow-x: hidden;
+  overflow-x: hidden; /* prevent horizontal scrollbar */
 }
 
 /* GREEN TOP SHAPE */
@@ -295,14 +293,15 @@ body {
 }
 
 /* scrolling content sits above the green & yellow */
-.scroll-content,
-.scl-con {
+.scroll-content {
   position: relative;
   z-index: 2;
+  overflow: hidden; /* ✅ fixes mobile blank space */
+  width: 100%;
 }
 
 .scl-con {
-  display: flex;
+  display: inline-flex; /* ✅ fixes mobile overflow issue */
   gap: 50px;
   white-space: nowrap;
   animation: scroll 15s linear infinite;
@@ -327,30 +326,29 @@ body {
 }
 
 @keyframes scroll {
-  0% { transform: translateX(0); }
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* --- RESPONSIVE TWEAKS --- */
-@media (max-width: 992px) {
-  .strip::before { top: -22px; height: 30px; }
-  .strip::after  { bottom: -35px; height: 35px; }
-  .scl-con { animation-duration: 13s; gap: 40px; font-size: 14px; }
+/* --- RESPONSIVE FIXES --- */
+@media (max-width: 1200px) { /* laptop screens */
+  .strip::before { top: -22px; height: 28px; }
+  .strip::after  { bottom: -28px; height: 28px; }
+  .scl-con { gap: 40px; font-size: 14px; animation-duration: 13s; }
 }
 
-@media (max-width: 768px) {
-  .strip::before { top: -18px; height: 26px; clip-path: polygon(120% 0, 100% 0, 100% 100%, 0 140%); }
-  .strip::after  { bottom: -28px; height: 28px; clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%); }
-  .scl-con { animation-duration: 11s; gap: 30px; font-size: 13px; padding: 12px 0; }
+@media (max-width: 768px) { /* tablets + large mobiles */
+  .strip::before { top: -18px; height: 22px; clip-path: polygon(120% 0, 100% 0, 100% 100%, 0 140%); }
+  .strip::after  { bottom: -20px; height: 22px; clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%); }
+  .scl-con { gap: 25px; font-size: 13px; padding: 10px 0; animation-duration: 11s; }
 }
 
-@media (max-width: 480px) {
-  .strip::before { top: -14px; height: 22px; }
-  .strip::after  { bottom: -22px; height: 22px; }
-  .scl-con { animation-duration: 9s; gap: 20px; font-size: 12px; padding: 10px 0; }
+@media (max-width: 480px) { /* small mobiles */
+  .strip::before { top: -12px; height: 18px; }
+  .strip::after  { bottom: -12px; height: 18px; }
+  .scl-con { gap: 15px; font-size: 12px; padding: 8px 0; animation-duration: 9s; }
 }
 
-  
 
     /* ---------------- SERVICES ---------------- */
     /* ===== SERVICES ===== */
