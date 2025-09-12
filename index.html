@@ -238,18 +238,21 @@ nav {
     @media (max-width: 768px) {
       .hero h1 { font-size: 40px; }
       .vector-bottom, .vector-top { display: none; }
-      .quote, .exp { position: static; text-align: center; margin: 20px auto; }
+      .quote, .exp { position: absolute; text-align: center; margin: 20px auto; top: 495px; }
       .exp p { font-size: 28px; }
+      .exp{ display: none;}
     }
     @media (max-width: 480px) {
       .hero h1 { font-size: 28px; }
       .btn { padding: 10px 20px; font-size: 13px; }
+      .hero-image { position: absolute; margin: 40px auto; width: 450px; left: -53px; top: 80px;}
+     .btns { position: relative; display: inline-block; z-index: 5; top: 225px;}
     }
 
 
     /* ======= SCROLL STRIP (FIXED: green strips visible) ======= */
     .strip{
-      position:relative;
+      position: relative;
       width:100%;
       background:#ff6b2d; /* yellow center */
       z-index:2;
