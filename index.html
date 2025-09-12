@@ -260,70 +260,96 @@ nav {
   width: 100%;
   background: #ff6b2d;
   z-index: 2;
-  overflow: visible;           /* keep pseudo elements visible */
+  overflow: visible; /* allow pseudo elements outside */
+}
+
+/* Stop only horizontal scrollbars */
+body {
+  overflow-x: hidden;
 }
 
 /* GREEN TOP SHAPE */
 .strip::before {
-    content: "";
-    position: absolute;
-    left: 0px;
-    top: -14px;
-    width: 100%;
-    height: 15px;
-    background: #1c3b2f;
-    clip-path: polygon(0 187%, 100% 0, 100% 100%, 0 100%);
-    z-index: 1;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -30px;
+  width: 100%;
+  height: 40px;
+  background: #1c3b2f;
+  clip-path: polygon(120% 0, 100% 0, 100% 100%, 0 160%);
+  z-index: 1;
 }
 
 /* GREEN BOTTOM SHAPE */
 .strip::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -40px;
-    width: 100%;
-    height: 40px;
-    background: #1c3b2f;
-    clip-path: polygon(0 0, 100% 0, 49% 0%, 0 47%);
-    z-index: 1;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -45px;
+  width: 100%;
+  height: 45px;
+  background: #1c3b2f;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 100%);
+  z-index: 1;
 }
+
 /* scrolling content sits above the green & yellow */
-.scroll-content, .scl-con {
+.scroll-content,
+.scl-con {
   position: relative;
   z-index: 2;
 }
 
+.scl-con {
+  display: flex;
+  gap: 50px;
+  white-space: nowrap;
+  animation: scroll 15s linear infinite;
+  padding: 15px 0;
+  font-weight: 600;
+  color: #fff;
+  font-size: 15px;
+  font-family: 'Lufga';
+}
 
-    .scl-con{
-      display:flex; gap:50px; white-space:nowrap;
-      animation: scroll 15s linear infinite;
-      padding:15px 0; font-weight:600; color:#fff; font-size:15px; font-family: 'Lufga';
-    }
-    .scl-con span{ display:flex; align-items:center; gap:8px; }
-    .scl-con span::before{ content:"✶"; font-size:14px; color:#fff; margin-right:6px; }
+.scl-con span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-    @keyframes scroll{
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+.scl-con span::before {
+  content: "✶";
+  font-size: 14px;
+  color: #fff;
+  margin-right: 6px;
+}
 
-    /* responsive tweaks for the strip + green shapes */
-    @media (max-width:992px){
-      .strip::before{ top:-24px; height:34px; }
-      .strip::after{ bottom:-48px; height:48px; }
-      .scl-con{ animation-duration:13s; gap:40px; font-size:14px; }
-    }
-    @media (max-width:768px){
-      .strip::before{ top:-18px; height:28px; clip-path: polygon(128% 0, 100% 0, 100% 100%, 0 150%); }
-      .strip::after{ bottom:-40px; height:40px; clip-path: polygon(0 0, 100% 0, 100% -25%, 0 30%); }
-      .scl-con{ animation-duration:11s; gap:30px; font-size:13px; padding:12px 0; }
-    }
-    @media (max-width:480px){
-      .strip::before{ top:-22px; height:22px; }
-      .strip::after{ bottom:-45px; height:45px; }
-      .scl-con{ animation-duration:9s; gap:20px; font-size:12px; padding:10px 0; }
-    }
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- RESPONSIVE TWEAKS --- */
+@media (max-width: 992px) {
+  .strip::before { top: -22px; height: 30px; }
+  .strip::after  { bottom: -35px; height: 35px; }
+  .scl-con { animation-duration: 13s; gap: 40px; font-size: 14px; }
+}
+
+@media (max-width: 768px) {
+  .strip::before { top: -18px; height: 26px; clip-path: polygon(120% 0, 100% 0, 100% 100%, 0 140%); }
+  .strip::after  { bottom: -28px; height: 28px; clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%); }
+  .scl-con { animation-duration: 11s; gap: 30px; font-size: 13px; padding: 12px 0; }
+}
+
+@media (max-width: 480px) {
+  .strip::before { top: -14px; height: 22px; }
+  .strip::after  { bottom: -22px; height: 22px; }
+  .scl-con { animation-duration: 9s; gap: 20px; font-size: 12px; padding: 10px 0; }
+}
+
   
 
     /* ---------------- SERVICES ---------------- */
