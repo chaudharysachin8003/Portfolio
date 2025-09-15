@@ -8,6 +8,12 @@
     <!-- Lufga Font (CDN) -->
   <link href="https://fonts.cdnfonts.com/css/lufga" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <script>
   (function() {
     emailjs.init("NaQ2sgLvuaxX1sLll"); // Replace with your EmailJS Public Key
@@ -819,6 +825,19 @@ section.experience {
   font-family: 'Lufga', sans-serif;
   color: #000;
 }
+/* .portfolio-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(180deg,#0f1020 0%, #111 100%);
+} */
+
+.portfolio-section .section-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
 
 /* Header */
 .portfolio-header {
@@ -848,63 +867,71 @@ section.experience {
   background: #e56f2c;
 }
 
-/* Slider */
-.portfolio-slider {
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-.portfolio-track {
-  display: flex;
-  transition: transform 0.6s ease;
-}
-.portfolio-card {
-  flex: 0 0 calc(50% - 10px); /* 2 cards per row */
-  margin: 0 5px;
-  position: relative;
-  border-radius: 20px;
-  width: 300px;
-  height: 200px;
-  overflow: hidden;
-  backdrop-filter: blur(12px); /* blur background */
-}
-.portfolio-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Makes the image cover the container */
-  object-position: center; /* Center the image */
-  height: auto;
-  border-radius: 20px;
-  display: block;
-}
-.card-overlay {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: #fff;
-  font-size: 24px;
-  font-weight: bold;
-}
 
-/* Dots */
-.portfolio-dots {
+.swiper-slide {
+  width: auto;
   display: flex;
-  justify-content: center;
-  margin: 20px 0;
-  gap: 8px;
+  flex-direction: column;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: white;
 }
-.portfolio-dots .dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #999;
-  transition: 0.3s;
-  cursor: pointer;
-}
-.portfolio-dots .dot.active {
-  background: #ff914d;
-  width: 28px;
-  border-radius: 20px;
-}
+ .portfolio-card {
+      width: 100%;
+      max-width: 420px;
+      height: 260px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      background: #222;
+    }
+      .portfolio-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .portfolio-card:hover img { transform: scale(1.03); }
+
+     .card-overlay {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      color: white;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.6);
+      z-index: 5;
+    }
+    .card-overlay h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      letter-spacing: 0.2px;
+    }
+
+    /* pagination bullets */
+    .swiper-pagination-bullet {
+      background: #ff914d;
+      border: 1px solid var(--blue);
+      opacity: 1;
+     
+    }
+    .swiper-pagination {
+ position: relative!important;
+      padding-top: 20px;
+
+    }
+
+
+    .swiper-pagination-bullet-active { background: var(--accent); border-color: var(--accent); width: 28px; border-radius: 20px; }
+
+    /* responsive tweaks */
+    @media (max-width: 724px) {
+      .portfolio-card { max-width: 350px; height: 220px; }
+    }
+    @media (max-width: 500px) {
+      .portfolio-card { max-width: 320px; height: 200px; }
+    }
 
 /* Tags */
 .tags {
@@ -1499,33 +1526,60 @@ section.experience {
     </form>
   <p id="status-msg"></p>
   </section>
-<section class="portfolio-section" id ="portfolio">
+<section class="portfolio-section" id="portfolio">
   <!-- Header -->
   <div class="portfolio-header">
     <h2>Lets have a look at my <span>Apps Design</span></h2>
-     <button class="see-all-btn">See All</button>
+    <button class="see-all-btn">See All</button>
   </div> 
 
   <!-- Slider -->
-  <div class="portfolio-slider">
-    <div class="portfolio-track" id="portfolioSlider">
-      <div class="portfolio-card">
-        <img src="./33e63f205737843.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png" alt="Grocery app">
-        <div class="card-overlay">
-          <h3>Grocery app</h3>
+  <div class="port-div">
+    <div class="portfolio-wrapper">
+      <div id="portfolioSwiper" class="swiper">
+        <div class="swiper-wrapper">
+          <!-- Example slides -->
+          <div class="swiper-slide">
+            <div class="portfolio-card">
+              <img src="https://picsum.photos/id/1015/800/600" alt="Project 1">
+              <div class="card-overlay"><h3>Grocery App</h3></div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="portfolio-card">
+              <img src="https://picsum.photos/id/1011/800/600" alt="Project 2">
+              <div class="card-overlay"><h3>Fitness App</h3></div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="portfolio-card">
+              <img src="https://picsum.photos/id/1005/800/600" alt="Project 3">
+              <div class="card-overlay"><h3>Travel UI</h3></div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="portfolio-card">
+              <img src="https://picsum.photos/id/1021/800/600" alt="Project 4">
+              <div class="card-overlay"><h3>Dashboard</h3></div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="portfolio-card">
+              <img src="https://picsum.photos/id/1025/800/600" alt="Project 5">
+              <div class="card-overlay"><h3>eCommerce UI</h3></div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="./Screens.jpg" alt="Fitness app">
-        <div class="card-overlay">
-          <h3>Fitness App</h3>
-        </div>
+
+        <!-- pagination -->
+        <div class="swiper-pagination"></div>
       </div>
     </div>
   </div>
-
-  <!-- Dots -->
-  <div class="portfolio-dots" id="portfolioDots"></div>
 
   <!-- Tags -->
   <div class="tags">
@@ -1544,6 +1598,7 @@ section.experience {
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim. Sed lobortis orci elementum egestas lobortis.</p>
   </div>
 </section>
+
 <footer class="footer" id ="contact">
   <!-- Header -->
   <div class="footer-header">
@@ -1668,35 +1723,81 @@ section.experience {
 </script>
 
 
-<script>
-const slider = document.getElementById("portfolioSlider");
-const dotsContainer = document.getElementById("portfolioDots");
-const slides = document.querySelectorAll(".portfolio-card");
+  <!-- Swiper JS -->
 
-let currentIndex = 0;
-let slidesPerView = window.innerWidth < 768 ? 1 : 2;
-let totalSlides = Math.ceil(slides.length / slidesPerView);
 
-// Create dots
-for (let i = 0; i < totalSlides; i++) {
-  let dot = document.createElement("div");
-  dot.classList.add("dot");
-  if (i === 0) dot.classList.add("active");
-  dot.addEventListener("click", () => goToSlide(i));
-  dotsContainer.appendChild(dot);
-}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const swiper = new Swiper('#portfolioSwiper', {
+        loop: true,
+        centeredSlides: true,
+        spaceBetween: 30,
+        effect: 'coverflow',
+        coverflowEffect: {
+          rotate: 0,
+          stretch: 0,
+          depth: 240,
+          modifier: 1,
+          slideShadows: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        autoplay: {
+          delay: 2800,
+          disableOnInteraction: false
+        },
+        grabCursor: true,
+        // responsive slidesPerView
+        breakpoints: {
+          0:   { slidesPerView: 1 },
+          501: { slidesPerView: 2 },
+          725: { slidesPerView: 2.3 }
+        }
+      });
 
-function goToSlide(index) {
-  currentIndex = index;
-  slider.style.transform = `translateX(-${index * 100}%)`;
-  updateDots();
-}
-function updateDots() {
-  document.querySelectorAll(".portfolio-dots .dot").forEach((dot, i) => {
-    dot.classList.toggle("active", i === currentIndex);
-  });
-}
-</script>
+      const root = document.getElementById('portfolioSwiper');
+
+      function attachHoverHandlers() {
+        // The DOM contains duplicated slides in loop mode; use the data attribute:
+        root.querySelectorAll('.swiper-slide').forEach(slideEl => {
+          // ensure we don't add multiple listeners
+          if (slideEl.dataset.hoverAttached) return;
+          slideEl.dataset.hoverAttached = '1';
+
+          slideEl.addEventListener('mouseenter', function () {
+            // data-swiper-slide-index contains the original index (0..N-1) even for clones
+            const realIndex = this.dataset && this.dataset.swiperSlideIndex !== undefined
+              ? Number(this.dataset.swiperSlideIndex)
+              : null;
+
+            if (realIndex !== null && !Number.isNaN(realIndex)) {
+              // slideToLoop accepts the real index (not the DOM index) and accounts for looped clones
+              swiper.slideToLoop(realIndex, 350);
+            }
+
+            // pause autoplay while hovering
+            if (swiper.autoplay && swiper.autoplay.running) swiper.autoplay.stop();
+          });
+
+          slideEl.addEventListener('mouseleave', () => {
+            // resume autoplay
+            if (swiper.autoplay && !swiper.autoplay.running) swiper.autoplay.start();
+          });
+        });
+      }
+
+      // initial attach and re-attach after update (e.g. on resize)
+      attachHoverHandlers();
+      swiper.on('update', attachHoverHandlers);
+      window.addEventListener('resize', () => {
+        // Swiper respects the breakpoints config, but call update to be safe
+        swiper.update();
+      });
+    });
+  </script>
+
   <!-- JS: Responsive slider with dots and swipe -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
