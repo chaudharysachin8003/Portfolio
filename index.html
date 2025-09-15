@@ -1526,7 +1526,7 @@ section.experience {
     </form>
   <p id="status-msg"></p>
   </section>
-<section class="portfolio-section" id="portfolio">
+<!-- <section class="portfolio-section" id="portfolio">
   <!-- Header -->
   <div class="portfolio-header">
     <h2>Lets have a look at my <span>Apps Design</span></h2>
@@ -1598,7 +1598,7 @@ section.experience {
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim. Sed lobortis orci elementum egestas lobortis.</p>
   </div>
 </section>
-
+ -->
 <footer class="footer" id ="contact">
   <!-- Header -->
   <div class="footer-header">
@@ -1727,75 +1727,75 @@ section.experience {
 
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const swiper = new Swiper('#portfolioSwiper', {
-        loop: true,
-        centeredSlides: true,
-        spaceBetween: 30,
-        effect: 'coverflow',
-        coverflowEffect: {
-          rotate: 0,
-          stretch: 0,
-          depth: 240,
-          modifier: 1,
-          slideShadows: true,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        autoplay: {
-          delay: 2800,
-          disableOnInteraction: false
-        },
-        grabCursor: true,
-        // responsive slidesPerView
-        breakpoints: {
-          0:   { slidesPerView: 1 },
-          501: { slidesPerView: 2 },
-          725: { slidesPerView: 2.3 }
-        }
-      });
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   const swiper = new Swiper('#portfolioSwiper', {
+    //     loop: true,
+    //     centeredSlides: true,
+    //     spaceBetween: 30,
+    //     effect: 'coverflow',
+    //     coverflowEffect: {
+    //       rotate: 0,
+    //       stretch: 0,
+    //       depth: 240,
+    //       modifier: 1,
+    //       slideShadows: true,
+    //     },
+    //     pagination: {
+    //       el: '.swiper-pagination',
+    //       clickable: true,
+    //     },
+    //     autoplay: {
+    //       delay: 2800,
+    //       disableOnInteraction: false
+    //     },
+    //     grabCursor: true,
+    //     // responsive slidesPerView
+    //     breakpoints: {
+    //       0:   { slidesPerView: 1 },
+    //       501: { slidesPerView: 2 },
+    //       725: { slidesPerView: 2.3 }
+    //     }
+    //   });
 
-      const root = document.getElementById('portfolioSwiper');
+    //   const root = document.getElementById('portfolioSwiper');
 
-      function attachHoverHandlers() {
-        // The DOM contains duplicated slides in loop mode; use the data attribute:
-        root.querySelectorAll('.swiper-slide').forEach(slideEl => {
-          // ensure we don't add multiple listeners
-          if (slideEl.dataset.hoverAttached) return;
-          slideEl.dataset.hoverAttached = '1';
+    //   function attachHoverHandlers() {
+    //     // The DOM contains duplicated slides in loop mode; use the data attribute:
+    //     root.querySelectorAll('.swiper-slide').forEach(slideEl => {
+    //       // ensure we don't add multiple listeners
+    //       if (slideEl.dataset.hoverAttached) return;
+    //       slideEl.dataset.hoverAttached = '1';
 
-          slideEl.addEventListener('mouseenter', function () {
-            // data-swiper-slide-index contains the original index (0..N-1) even for clones
-            const realIndex = this.dataset && this.dataset.swiperSlideIndex !== undefined
-              ? Number(this.dataset.swiperSlideIndex)
-              : null;
+    //       slideEl.addEventListener('mouseenter', function () {
+    //         // data-swiper-slide-index contains the original index (0..N-1) even for clones
+    //         const realIndex = this.dataset && this.dataset.swiperSlideIndex !== undefined
+    //           ? Number(this.dataset.swiperSlideIndex)
+    //           : null;
 
-            if (realIndex !== null && !Number.isNaN(realIndex)) {
-              // slideToLoop accepts the real index (not the DOM index) and accounts for looped clones
-              swiper.slideToLoop(realIndex, 350);
-            }
+    //         if (realIndex !== null && !Number.isNaN(realIndex)) {
+    //           // slideToLoop accepts the real index (not the DOM index) and accounts for looped clones
+    //           swiper.slideToLoop(realIndex, 350);
+    //         }
 
-            // pause autoplay while hovering
-            if (swiper.autoplay && swiper.autoplay.running) swiper.autoplay.stop();
-          });
+    //         // pause autoplay while hovering
+    //         if (swiper.autoplay && swiper.autoplay.running) swiper.autoplay.stop();
+    //       });
 
-          slideEl.addEventListener('mouseleave', () => {
-            // resume autoplay
-            if (swiper.autoplay && !swiper.autoplay.running) swiper.autoplay.start();
-          });
-        });
-      }
+    //       slideEl.addEventListener('mouseleave', () => {
+    //         // resume autoplay
+    //         if (swiper.autoplay && !swiper.autoplay.running) swiper.autoplay.start();
+    //       });
+    //     });
+    //   }
 
-      // initial attach and re-attach after update (e.g. on resize)
-      attachHoverHandlers();
-      swiper.on('update', attachHoverHandlers);
-      window.addEventListener('resize', () => {
-        // Swiper respects the breakpoints config, but call update to be safe
-        swiper.update();
-      });
-    });
+    //   // initial attach and re-attach after update (e.g. on resize)
+    //   attachHoverHandlers();
+    //   swiper.on('update', attachHoverHandlers);
+    //   window.addEventListener('resize', () => {
+    //     // Swiper respects the breakpoints config, but call update to be safe
+    //     swiper.update();
+    //   });
+    // });
   </script>
 
   <!-- JS: Responsive slider with dots and swipe -->
