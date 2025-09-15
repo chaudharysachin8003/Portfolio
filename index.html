@@ -1541,14 +1541,14 @@ section.experience {
           <!-- Example slides -->
           <div class="swiper-slide">
             <div class="portfolio-card">
-              <img src="https://picsum.photos/id/1015/800/600" alt="Project 1">
+              <img src="./33e63f205737843.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png" alt="Grocery App">
               <div class="card-overlay"><h3>Grocery App</h3></div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="portfolio-card">
-              <img src="https://picsum.photos/id/1011/800/600" alt="Project 2">
+              <img src="./Screens.jpg" alt="Project 2">
               <div class="card-overlay"><h3>Fitness App</h3></div>
             </div>
           </div>
@@ -1799,107 +1799,129 @@ section.experience {
   </script>
 
   <!-- JS: Responsive slider with dots and swipe -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const slider = document.getElementById('slider');
-      const sliderContainer = document.querySelector('.slider-container');
-      const cardContainers = Array.from(document.querySelectorAll('.card-container'));
-      const dotsContainer = document.getElementById('dots');
+ <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const slider = document.getElementById('slider');
+    const sliderContainer = document.querySelector('.slider-container');
+    const cardContainers = Array.from(document.querySelectorAll('.card-container'));
+    const dotsContainer = document.getElementById('dots');
 
-      let currentIndex = 0;
-      let cardsPerView = calcCardsPerView();
-      let totalCards = cardContainers.length;
-      let totalPages = Math.ceil(totalCards / cardsPerView);
+    let currentIndex = 0;
+    let cardsPerView = calcCardsPerView();
+    let totalCards = cardContainers.length;
+    let totalPages = Math.ceil(totalCards / cardsPerView);
 
-      function calcCardsPerView() {
-        const w = window.innerWidth;
-        if (w <= 480) return 1;    // small phones
-        if (w <= 768) return 2;    // tablets & small laptops
-        if (w <= 992) return 2;    // medium laptops
-        return 3;                  // large desktop
-      }
+    function calcCardsPerView() {
+      const w = window.innerWidth;
+      if (w <= 480) return 1;    
+      if (w <= 768) return 2;    
+      if (w <= 992) return 2;    
+      return 3;                  
+    }
 
-      function setCardFlexBasis() {
-        cardsPerView = calcCardsPerView();
-        const basis = 100 / cardsPerView;
-        cardContainers.forEach(c => {
-          c.style.flex = `0 0 ${basis}%`;
+    function setCardFlexBasis() {
+      cardsPerView = calcCardsPerView();
+      const basis = 100 / cardsPerView;
+      cardContainers.forEach(c => {
+        c.style.flex = `0 0 ${basis}%`;
+      });
+    }
+
+    function createDots() {
+      dotsContainer.innerHTML = '';
+      totalPages = Math.ceil(totalCards / cardsPerView);
+      for (let i = 0; i < totalPages; i++) {
+        const dot = document.createElement('span');
+        dot.addEventListener('click', () => {
+          goToSlide(i);
+          resetAutoplay();
         });
+        if (i === currentIndex) dot.classList.add('active');
+        dotsContainer.appendChild(dot);
       }
+      updateDots();
+    }
 
-      function createDots() {
-        dotsContainer.innerHTML = '';
-        totalPages = Math.ceil(totalCards / cardsPerView);
-        for (let i = 0; i < totalPages; i++) {
-          const dot = document.createElement('span');
-          dot.addEventListener('click', () => goToSlide(i));
-          if (i === currentIndex) dot.classList.add('active');
-          dotsContainer.appendChild(dot);
-        }
-        updateDots();
-      }
-
-      function updateDots() {
-        const dots = Array.from(dotsContainer.querySelectorAll('span'));
-        dots.forEach((d, i) => {
-          d.classList.toggle('active', i === currentIndex);
-        });
-      }
-
-      function goToSlide(index) {
-        if (index < 0) index = 0;
-        if (index >= totalPages) index = totalPages - 1;
-        currentIndex = index;
-
-        // shift by one container width per page:
-        const shiftPx = index * sliderContainer.clientWidth;
-        slider.style.transform = `translateX(-${shiftPx}px)`;
-        updateDots();
-      }
-
-      // touch / swipe support
-      let startX = 0;
-      sliderContainer.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-      }, {passive:true});
-
-      sliderContainer.addEventListener('touchend', (e) => {
-        const endX = e.changedTouches[0].clientX;
-        const diff = startX - endX;
-        if (Math.abs(diff) > 50) {
-          if (diff > 0) goToSlide(currentIndex + 1);
-          else goToSlide(currentIndex - 1);
-        }
+    function updateDots() {
+      const dots = Array.from(dotsContainer.querySelectorAll('span'));
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === currentIndex);
       });
+    }
 
-      // resize handling (debounced)
-      let resizeTimer;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-          const oldCardsPerView = cardsPerView;
-          setCardFlexBasis();
-          // recalc pages and clamp index
-          totalPages = Math.ceil(totalCards / cardsPerView);
-          if (currentIndex >= totalPages) currentIndex = totalPages - 1;
-          createDots();
-          // re-position slider so layout remains consistent
-          goToSlide(currentIndex);
-        }, 120);
-      });
+    function goToSlide(index) {
+      if (index < 0) index = 0;
+      if (index >= totalPages) index = 0; // loop back to start
+      currentIndex = index;
 
-      // initial setup
-      setCardFlexBasis();
-      createDots();
-      goToSlide(0);
+      const shiftPx = index * sliderContainer.clientWidth;
+      slider.style.transform = `translateX(-${shiftPx}px)`;
+      updateDots();
+    }
 
-      // Optional: allow keyboard navigation
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
-        if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
-      });
+    // autoplay setup
+    let autoplayInterval = null;
+    function startAutoplay() {
+      autoplayInterval = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, 4000); // every 4 sec
+    }
+    function resetAutoplay() {
+      clearInterval(autoplayInterval);
+      startAutoplay();
+    }
+
+    // touch / swipe
+    let startX = 0;
+    sliderContainer.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    }, {passive:true});
+
+    sliderContainer.addEventListener('touchend', (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) goToSlide(currentIndex + 1);
+        else goToSlide(currentIndex - 1);
+        resetAutoplay();
+      }
     });
-  </script>
+
+    // resize handling
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const oldCardsPerView = cardsPerView;
+        setCardFlexBasis();
+        totalPages = Math.ceil(totalCards / cardsPerView);
+        if (currentIndex >= totalPages) currentIndex = totalPages - 1;
+        createDots();
+        goToSlide(currentIndex);
+        resetAutoplay();
+      }, 120);
+    });
+
+    // init
+    setCardFlexBasis();
+    createDots();
+    goToSlide(0);
+    startAutoplay();
+
+    // keyboard nav
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        goToSlide(currentIndex + 1);
+        resetAutoplay();
+      }
+      if (e.key === 'ArrowLeft') {
+        goToSlide(currentIndex - 1);
+        resetAutoplay();
+      }
+    });
+  });
+</script>
+
 
 </body>
 </html>
